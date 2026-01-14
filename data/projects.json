@@ -1,0 +1,126 @@
+{
+  "jogakbo-tray": {
+    "title": {
+      "kr": "조각보 트레이",
+      "en": "Jogakbo Tray"
+    },
+    "category": {
+      "kr": "Product Design",
+      "en": "Product Design"
+    },
+    "year": "2024",
+    "description": {
+      "kr": [
+        "전통 조각보의 절약 정신과 짜맞춤 기법을 현대적으로 재해석한 목공예 트레이입니다. 가구 제작 과정에서 발생하는 자투리 목재를 활용하여, 각기 다른 나무의 결과 색상을 조화롭게 배치했습니다.",
+        "전통 제혀쪽매와 사개맞춤 기법으로 조립하여 접착제 사용을 최소화하였으며, 제품마다 고유한 무늬를 지닌 유일한 작품입니다. 버려질 뻔한 나무 조각들이 새로운 가치를 얻어 일상의 아름다움으로 재탄생합니다."
+      ],
+      "en": [
+        "A modern reinterpretation of traditional Korean Jogakbo patchwork and joinery techniques in woodcraft. This tray utilizes scrap wood from furniture production, harmoniously arranging different wood grains and colors.",
+        "Assembled using traditional mortise and tenon joinery to minimize adhesive use, each piece features a unique pattern, making it a one-of-a-kind work. Wood pieces that would have been discarded are given new value, reborn as everyday beauty."
+      ]
+    },
+    "specs": {
+      "material": {
+        "kr": "원목 (오크, 월넛, 메이플)",
+        "en": "Solid Wood (Oak, Walnut, Maple)"
+      },
+      "size": "W 350 × D 250 × H 30 mm",
+      "finish": {
+        "kr": "자연 유래 오일 피니시",
+        "en": "Natural Oil Finish"
+      },
+      "production": {
+        "kr": "전통 짜맞춤 + 수작업",
+        "en": "Traditional Joinery + Handcrafted"
+      }
+    },
+    "images": [
+      "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&h=1000&fit=crop",
+      "https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=800&h=1200&fit=crop",
+      "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=800&h=900&fit=crop",
+      "https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?w=800&h=1100&fit=crop",
+      "https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=800&h=800&fit=crop",
+      "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=800&h=1000&fit=crop",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&h=700&fit=crop"
+    ]
+  },
+  "popup-booth": {
+    "title": {
+      "kr": "백화점 팝업부스 가구",
+      "en": "Department Store Popup Booth Furniture"
+    },
+    "category": {
+      "kr": "공간 디자인",
+      "en": "Space Design"
+    },
+    "year": "2024",
+    "description": {
+      "kr": [
+        "백화점 팝업 스토어를 위한 모듈형 가구 시스템입니다. 조립과 해체가 용이하여 다양한 공간에 적용 가능하며, 원목의 따뜻함과 현대적인 디자인을 조화롭게 결합했습니다.",
+        "지속 가능한 디자인을 지향하며, 재사용 가능한 구조로 설계되었습니다."
+      ],
+      "en": [
+        "A modular furniture system designed for department store popup stores. Easy to assemble and disassemble for use in various spaces, harmoniously combining the warmth of solid wood with modern design.",
+        "Oriented towards sustainable design, structured for reusability."
+      ]
+    },
+    "specs": {
+      "material": {
+        "kr": "원목 (참나무)",
+        "en": "Solid Wood (Oak)"
+      },
+      "size": "Variable",
+      "finish": {
+        "kr": "무광 우레탄",
+        "en": "Matte Urethane"
+      },
+      "production": {
+        "kr": "모듈형 조립식",
+        "en": "Modular Assembly"
+      }
+    },
+    "images": [
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&h=1000&fit=crop",
+      "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&h=900&fit=crop&sat=-100"
+    ]
+  },
+  "wood-object": {
+    "title": {
+      "kr": "우드 오브제 컬렉션",
+      "en": "Wood Object Collection"
+    },
+    "category": {
+      "kr": "Product Design",
+      "en": "Product Design"
+    },
+    "year": "2023",
+    "description": {
+      "kr": [
+        "일상 속 작은 순간을 특별하게 만드는 우드 오브제 컬렉션입니다. 각각의 오브제는 독립적으로 사용 가능하며, 함께 배치하여 공간에 따뜻함을 더할 수 있습니다."
+      ],
+      "en": [
+        "A wood object collection that makes small moments in daily life special. Each object can be used independently or arranged together to add warmth to any space."
+      ]
+    },
+    "specs": {
+      "material": {
+        "kr": "원목 (월넛, 체리)",
+        "en": "Solid Wood (Walnut, Cherry)"
+      },
+      "size": "Various",
+      "finish": {
+        "kr": "천연 오일",
+        "en": "Natural Oil"
+      },
+      "production": {
+        "kr": "수작업",
+        "en": "Handcrafted"
+      }
+    },
+    "images": [
+      "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=800&h=1000&fit=crop",
+      "https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=800&h=1200&fit=crop"
+    ]
+  }
+}

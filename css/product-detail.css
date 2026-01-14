@@ -1,0 +1,358 @@
+/* Product Detail Page */
+.product-detail {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    min-height: 100vh;
+    padding-top: 100px;
+}
+
+/* Left: Product Gallery - 스크롤됨 */
+.product-gallery {
+    padding: 2rem 3rem 3rem 3rem;
+}
+
+.gallery-images {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.gallery-images img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Mobile Thumbnails - 기본은 숨김 */
+.mobile-thumbnails {
+    display: none;
+}
+
+/* Right: Product Information - 고정됨 */
+.product-info {
+    padding: 2rem 3rem 3rem 3rem;
+    background-color: var(--warm-white);
+    position: sticky;
+    top: 100px;
+    height: fit-content;
+    align-self: start;
+}
+
+.product-info-inner {
+    max-width: 500px;
+}
+
+.product-title {
+    font-family: 'Newsreader', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 1rem;
+    line-height: 1.2;
+}
+
+.product-price {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 3rem;
+}
+
+.product-description h2,
+.product-measurements h2,
+.product-options h2 {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+}
+
+.product-description {
+    margin-bottom: 3rem;
+    line-height: 1.8;
+}
+
+.product-description p {
+    margin-bottom: 1rem;
+    color: var(--text-primary);
+}
+
+/* Measurements */
+.product-measurements {
+    margin-bottom: 3rem;
+}
+
+.product-measurements ul {
+    list-style: none;
+}
+
+.product-measurements li {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.8rem 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.product-measurements .label {
+    color: var(--text-secondary);
+}
+
+.product-measurements .value {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+/* Finish Options */
+.product-options {
+    margin-bottom: 3rem;
+}
+
+.finish-options {
+    display: flex;
+    gap: 1rem;
+}
+
+.finish-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    border: 2px solid transparent;
+    transition: border-color 0.3s ease;
+}
+
+.finish-option:hover {
+    border-color: var(--text-secondary);
+}
+
+.finish-option.active {
+    border-color: var(--brand-yellow);
+}
+
+.finish-swatch {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.finish-option span {
+    font-size: 0.85rem;
+    color: var(--text-primary);
+    text-align: center;
+}
+
+/* Product Actions */
+.product-actions {
+    margin-bottom: 2rem;
+}
+
+.quantity-selector {
+    margin-bottom: 1.5rem;
+}
+
+.quantity-selector label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.8rem;
+}
+
+.quantity-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    width: fit-content;
+}
+
+.qty-btn {
+    width: 40px;
+    height: 40px;
+    border: 1px solid var(--text-primary);
+    background: white;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.qty-btn:hover {
+    background: var(--text-primary);
+    color: white;
+}
+
+#quantity {
+    width: 60px;
+    height: 40px;
+    text-align: center;
+    border: 1px solid var(--text-primary);
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.add-to-cart-btn,
+.contact-btn {
+    width: 100%;
+    padding: 1rem 2rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    margin-bottom: 1rem;
+}
+
+.add-to-cart-btn {
+    background-color: var(--brand-yellow);
+    color: var(--text-primary);
+}
+
+.add-to-cart-btn:hover {
+    background-color: var(--wood-tone);
+}
+
+.contact-btn {
+    background-color: transparent;
+    border: 2px solid var(--text-primary);
+    color: var(--text-primary);
+}
+
+.contact-btn:hover {
+    background-color: var(--text-primary);
+    color: white;
+}
+
+/* Product Note */
+.product-note {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.product-note p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 0.5rem;
+}
+
+.product-note a {
+    color: var(--text-primary);
+    text-decoration: underline;
+}
+
+.product-note a:hover {
+    color: var(--brand-yellow);
+}
+
+/* Responsive - Tablet */
+@media (max-width: 1024px) {
+    .product-detail {
+        padding-top: 90px;
+    }
+
+    .product-gallery,
+    .product-info {
+        padding: 2rem;
+    }
+}
+
+/* Responsive - Mobile (갤러리 형식) */
+@media (max-width: 768px) {
+    .product-detail {
+        grid-template-columns: 1fr;
+        padding-top: 80px;
+    }
+
+    .product-gallery {
+        position: static;
+        padding: 1.5rem;
+    }
+
+    /* 모바일 갤러리: 첫 이미지만 크게 보이기 */
+    .gallery-images {
+        gap: 0;
+    }
+
+    .gallery-images img {
+        display: none;
+    }
+
+    .gallery-images img:first-child {
+        display: block;
+        margin-bottom: 1rem;
+    }
+
+    /* 모바일 썸네일 그리드 */
+    .mobile-thumbnails {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.5rem;
+    }
+
+    .mobile-thumbnails img {
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+        cursor: pointer;
+        opacity: 0.6;
+        transition: opacity 0.3s ease;
+    }
+
+    .mobile-thumbnails img:hover,
+    .mobile-thumbnails img.active {
+        opacity: 1;
+    }
+
+    .product-info {
+        padding: 2rem 1.5rem;
+        position: static;
+    }
+
+    .product-info-inner {
+        max-width: 100%;
+    }
+
+    .product-title {
+        font-size: 2rem;
+    }
+
+    .product-price {
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+    }
+
+    .finish-options {
+        flex-wrap: wrap;
+    }
+
+    .finish-swatch {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+    .product-gallery,
+    .product-info {
+        padding: 1rem;
+    }
+
+    .product-title {
+        font-size: 1.8rem;
+    }
+
+    .product-price {
+        font-size: 1.3rem;
+    }
+
+    .mobile-thumbnails {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact - 감각공예단</title>
+    <link rel="stylesheet" href="https://use.typekit.net/wqo4akj.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/contact.css" />
+  </head>
+  <body>
+    <!-- Language Switcher - Top Right -->
+    <div class="top-language-switcher">
+      <a href="#" class="active">KR</a>
+      <span class="separator">/</span>
+      <a href="#">EN</a>
+    </div>
+
+    <header>
+      <div class="logo">
+        <a href="index.html">gggyd</a>
+      </div>
+      <nav>
+        <a href="about.html">About</a>
+        <a href="work.html">Work</a>
+        <a href="shop.html">Shop</a>
+        <a href="contact.html">Contact</a>
+        <button class="menu-toggle" id="menuToggle">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </header>
+
+    <!-- Full Page Menu Overlay -->
+    <div class="menu-overlay" id="menuOverlay">
+      <button class="menu-close" id="menuClose"></button>
+      <div class="menu-content">
+        <nav class="overlay-nav">
+          <a href="about.html">About</a>
+          <a href="work.html">Work</a>
+          <a href="shop.html">Shop</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="overlay-language">
+          <a href="#" class="lang-link active" data-lang="kr">KR</a>
+          <span class="separator">/</span>
+          <a href="#" class="lang-link" data-lang="en">EN</a>
+        </div>
+      </div>
+    </div>
+
+    <main class="contact-page">
+      <div class="contact-container">
+        <!-- Left: Contact Information -->
+        <div class="contact-info">
+          <h1>Contact</h1>
+          <p class="contact-intro">
+            감각공예단에 대해 궁금하신 점이나<br />
+            프로젝트 문의가 있으시다면<br />
+            언제든지 연락 주세요.
+          </p>
+
+          <div class="info-section">
+            <h2>Email</h2>
+            <a href="mailto:gggongyedan@gmail.com" class="info-link"
+              >gggongyedan@gmail.com</a
+            >
+          </div>
+
+          <div class="info-section">
+            <h2>Instagram</h2>
+            <a
+              href="https://instagram.com/gggyd.design"
+              target="_blank"
+              class="info-link"
+              >@gggyd.design</a
+            >
+          </div>
+
+          <div class="info-section">
+            <h2>Address</h2>
+            <p class="info-text">
+              경기도 성남시<br />
+              성남대로 772번길 9-1<br />
+              지하1층 감각공예단
+            </p>
+          </div>
+
+          <div class="info-section">
+            <h2>Workshop Hours</h2>
+            <p class="info-text">
+              월-금: 10:00 - 18:00<br />
+              토요일: 예약제<br />
+              일요일 및 공휴일: 휴무
+            </p>
+          </div>
+        </div>
+
+        <!-- Right: Contact Form -->
+        <div class="contact-form">
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">이름 *</label>
+              <input type="text" id="name" name="name" required />
+            </div>
+
+            <div class="form-group">
+              <label for="email">이메일 *</label>
+              <input type="email" id="email" name="email" required />
+            </div>
+
+            <div class="form-group">
+              <label for="phone">전화번호</label>
+              <input type="tel" id="phone" name="phone" />
+            </div>
+
+            <div class="form-group">
+              <label for="subject">문의 유형 *</label>
+              <select id="subject" name="subject" required>
+                <option value="">선택해주세요</option>
+                <option value="product">제품 문의</option>
+                <option value="project">프로젝트 의뢰</option>
+                <option value="collaboration">협업 제안</option>
+                <option value="other">기타</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="message">메시지 *</label>
+              <textarea
+                id="message"
+                name="message"
+                rows="6"
+                required
+              ></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">보내기</button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+    <script <script src="js/script.js"></script>
+    <script src="js/language-switcher.js"></script>
+    <script src="js/menu-toggle.js"></script>
+    <script src="js/contact.js"></script>
+  </body>
+</html>

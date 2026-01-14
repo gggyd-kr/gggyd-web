@@ -1,0 +1,188 @@
+/* Project Detail New Page */
+.project-detail-new {
+    min-height: 100vh;
+    padding: 160px 3rem 5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Project Header */
+.project-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 5rem;
+    margin-bottom: 6rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid var(--light-gray);
+}
+
+/* Left: Title + Description */
+.project-intro {
+    max-width: 700px;
+}
+
+.project-title {
+    font-family: 'Newsreader', serif;
+    font-size: 2.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 2rem;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+}
+
+.project-description {
+    line-height: 1.9;
+    color: var(--text-primary);
+}
+
+.project-description p {
+    margin-bottom: 1.5rem;
+    font-size: 1.05rem;
+}
+
+.project-description p:last-child {
+    margin-bottom: 0;
+}
+
+/* Right: Meta Info */
+.project-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: right;
+}
+
+.meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    align-items: flex-end;
+}
+
+.meta-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+.meta-value {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    font-weight: 400;
+    line-height: 1.6;
+}
+
+.meta-item:first-child .meta-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+/* Project Gallery - Masonry Layout */
+.project-gallery {
+    position: relative;
+    width: 100%;
+}
+
+.gallery-image {
+    position: absolute;
+    width: calc(50% - 1rem);
+}
+
+.gallery-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+    .project-detail-new {
+        padding: 100px 2.5rem 4rem;
+    }
+
+    .project-header {
+        gap: 4rem;
+        margin-bottom: 4rem;
+    }
+
+    .project-title {
+        font-size: 2.2rem;
+    }
+
+    .project-gallery {
+        gap: 1.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-detail-new {
+        padding: 100px 2rem 3rem;
+    }
+
+    .project-header {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        margin-bottom: 3rem;
+    }
+
+    .project-intro {
+        max-width: 100%;
+    }
+
+    .project-title {
+        font-size: 2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .project-description p {
+        font-size: 1rem;
+    }
+
+    .project-meta {
+        gap: 1.2rem;
+        padding-top: 2rem;
+        border-top: 1px solid var(--light-gray);
+    }
+
+    .project-gallery {
+        position: static;
+    }
+
+    .gallery-image {
+        position: static;
+        width: 100%;
+        margin-bottom: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-detail-new {
+        padding: 90px 1.5rem 2.5rem;
+    }
+
+    .project-header {
+        gap: 2.5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .project-title {
+        font-size: 1.8rem;
+    }
+
+    .project-description p {
+        font-size: 0.95rem;
+        margin-bottom: 1.2rem;
+    }
+
+    .meta-item:first-child .meta-value {
+        font-size: 1.3rem;
+    }
+
+    .gallery-image {
+        /* 불필요한 스타일 제거 */
+    }
+}
