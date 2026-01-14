@@ -609,7 +609,7 @@ body:has(.shop-page) .menu-overlay {
   align-items: center;
   justify-content: center;
   z-index: 10000;
-  opacity: 0;
+  opacity: 1;
   transition: opacity 0.5s ease;
 }
 
