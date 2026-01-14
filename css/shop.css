@@ -28,7 +28,7 @@ body:has(.shop-page)::-webkit-scrollbar-thumb:hover {
 .products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 2rem 1.5rem;
+  gap: 3rem 2rem;
   padding: 2rem 3rem 5rem;
   max-width: 1600px;
   margin: 0 auto;
@@ -68,10 +68,11 @@ body:has(.shop-page)::-webkit-scrollbar-thumb:hover {
 .product-images {
   position: relative;
   width: 100%;
-  aspect-ratio: 1/1;
+  aspect-ratio: 2/3;
   overflow: hidden;
   background-color: var(--light-gray);
   margin-bottom: 0;
+  border: 1px solid #0d0d0d;
 }
 
 .product-images img {
@@ -125,7 +126,7 @@ body:has(.shop-page)::-webkit-scrollbar-thumb:hover {
 }
 
 /* Responsive */
-@media (max-width: 1200px) {
+@media (max-width: 900px) {
   .products-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 2rem 1.5rem;
