@@ -7,11 +7,7 @@
 
     <!-- 랜딩 페이지로 자동 리다이렉트 (임시) -->
     <script>
-      // 세션 확인: 이미 랜딩 페이지를 거쳤으면 리다이렉트 안 함
-      if (!sessionStorage.getItem("visited")) {
-        sessionStorage.setItem("visited", "true");
-        window.location.href = "landing.html";
-      }
+      window.location.href = "landing.html";
     </script>
 
     <link rel="stylesheet" href="https://use.typekit.net/wqo4akj.css" />
