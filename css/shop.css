@@ -28,8 +28,8 @@ body:has(.shop-page)::-webkit-scrollbar-thumb:hover {
 .products-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 3rem 2rem;
-  padding: 2rem 3rem 5rem;
+  gap: 3rem 2.5rem;
+  padding: 3rem 4rem 5rem;
   max-width: 1600px;
   margin: 0 auto;
 }
@@ -68,7 +68,7 @@ body:has(.shop-page)::-webkit-scrollbar-thumb:hover {
 .product-images {
   position: relative;
   width: 100%;
-  aspect-ratio: 2/3;
+  aspect-ratio: 550/660;
   overflow: hidden;
   background-color: var(--light-gray);
   margin-bottom: 0;

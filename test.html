@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>gggyd-kr — Landing</title>
+  <meta name="description" content="작업과 브랜드를 소개하는 랜딩페이지" />
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --panel:#11131a;
+      --text:#e9ecf1;
+      --muted:#a8afbd;
+      --line:rgba(255,255,255,.08);
+      --accent:#d7ff5e;
+
+      --radius:18px;
+      --max:1100px;
+
+      /* walker tuning */
+      --stageH: 220px;
+      --figureW: 120px;
+      --figureH: 168px;
+      --moveTime: 1.8s;
+      --walkSpeed: .34s;
+      --bob: 6px;
+      --meetX: 120px; /* ✅ 여기만 조정하면 중앙 만나는 위치 바뀜 */
+    }
+
+    *{ box-sizing:border-box; }
+    html,body{ height:100%; }
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, "Apple SD Gothic Neo", "Noto Sans KR", Segoe UI, Roboto, Helvetica, Arial;
+      background: radial-gradient(1200px 600px at 20% -10%, rgba(215,255,94,.16), transparent 60%),
+                  radial-gradient(900px 500px at 90% 0%, rgba(120,160,255,.14), transparent 60%),
+                  var(--bg);
+      color:var(--text);
+      letter-spacing:-0.2px;
+    }
+    a{ color:inherit; text-decoration:none; }
+    .wrap{ max-width:var(--max); margin:0 auto; padding:22px 18px 70px; }
+
+    /* header */
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      position:sticky;
+      top:0;
+      z-index:10;
+      padding:14px 0;
+      backdrop-filter: blur(10px);
+      background: linear-gradient(to bottom, rgba(11,12,16,.86), rgba(11,12,16,.35));
+      border-bottom: 1px solid rgba(255,255,255,.04);
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:650;
+      letter-spacing:.2px;
+    }
+    .dot{
+      width:10px; height:10px; border-radius:999px;
+      background: var(--accent);
+      box-shadow: 0 0 22px rgba(215,255,94,.45);
+    }
+    nav{ display:flex; gap:14px; color:var(--muted); font-size:14px; }
+    nav a{ padding:8px 10px; border-radius:10px; }
+    nav a:hover{ background: rgba(255,255,255,.06); color:var(--text); }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:11px 14px;
+      border-radius: 12px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      color:var(--text);
+      font-weight:600;
+      font-size:14px;
+      gap:8px;
+      cursor:pointer;
+    }
+    .btn.primary{
+      border-color: rgba(215,255,94,.35);
+      background: rgba(215,255,94,.14);
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0); }
+
+    /* hero */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap:18px;
+      margin-top:18px;
+      align-items:stretch;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: var(--radius);
+      overflow:hidden;
+      box-shadow: 0 16px 60px rgba(0,0,0,.35);
+    }
+    .hero-left{ padding:26px; }
+    .kicker{
+      display:inline-flex; align-items:center; gap:8px;
+      font-size:13px;
+      color:var(--muted);
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.04);
+    }
+    h1{
+      margin:14px 0 10px;
+      font-size: 44px;
+      line-height:1.06;
+      letter-spacing:-1.2px;
+    }
+    .lead{
+      margin:0 0 18px;
+      color:var(--muted);
+      font-size:16px;
+      line-height:1.6;
+      max-width: 55ch;
+    }
+    .cta{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 14px;
+    }
+
+    /* animation stage */
+    .stage{
+      position: relative;
+      height: var(--stageH);
+      border-top: 1px solid rgba(255,255,255,.08);
+      margin-top: 22px;
+      overflow:hidden;
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.00));
+    }
+    .ground{
+      position:absolute;
+      left:0; right:0; bottom:26px;
+      height:1px;
+      background: rgba(255,255,255,.12);
+      opacity:.65;
+    }
+    .walker{
+      position:absolute;
+      top: 50%;
+      width: var(--figureW);
+      height: var(--figureH);
+      transform: translateY(-50%);
+      filter: drop-shadow(0 18px 18px rgba(0,0,0,.45));
+      opacity:.95;
+    }
+    .walker svg{ width:100%; height:100%; display:block; }
+
+    /* start positions */
+    .walker.left{ left: calc(-1 * var(--figureW)); }
+    .walker.right{
+      right: calc(-1 * var(--figureW));
+      transform: translateY(-50%) scaleX(-1);
+    }
+
+    /* move + walk */
+    .walker.left{
+      animation:
+        moveLeft var(--moveTime) ease-out forwards,
+        bob var(--walkSpeed) ease-in-out infinite;
+    }
+    .walker.right{
+      animation:
+        moveRight var(--moveTime) ease-out forwards,
+        bob var(--walkSpeed) ease-in-out infinite;
+    }
+
+    /* arms/legs swing */
+    .arm1, .leg1{ animation: swing1 var(--walkSpeed) ease-in-out infinite; }
+    .arm2, .leg2{ animation: swing2 var(--walkSpeed) ease-in-out infinite; }
+    .arm1, .arm2{ transform-origin: 50px 55px; }
+    .leg1, .leg2{ transform-origin: 50px 82px; }
+
+    @keyframes swing1{ 0%,100%{ transform: rotate(18deg);} 50%{ transform: rotate(-18deg);} }
+    @keyframes swing2{ 0%,100%{ transform: rotate(-18deg);} 50%{ transform: rotate(18deg);} }
+
+    @keyframes bob{
+      0%,100%{ transform: translateY(-50%) translateY(0); }
+      50%{ transform: translateY(-50%) translateY(calc(-1 * var(--bob))); }
+    }
+
+    @keyframes moveLeft{ to{ left: var(--meetX); } }
+    @keyframes moveRight{ to{ right: var(--meetX); } }
+
+    /* optional final overlay */
+    .final{
+      position:absolute;
+      inset:0;
+      margin:auto;
+      width:100%;
+      height:auto;
+      opacity:0;
+      animation: showFinal 0.01s linear forwards;
+      animation-delay: var(--moveTime);
+      pointer-events:none;
+    }
+    @keyframes showFinal{ to{ opacity:1; } }
+
+    /* right card (preview/image) */
+    .hero-right{
+      display:flex;
+      flex-direction:column;
+      min-height: 420px;
+    }
+    .preview{
+      flex: 1;
+      position:relative;
+      padding:18px;
+    }
+    .preview .box{
+      height:100%;
+      border-radius: 16px;
+      border:1px dashed rgba(255,255,255,.18);
+      background:
+        radial-gradient(500px 220px at 40% 20%, rgba(215,255,94,.12), transparent 60%),
+        radial-gradient(420px 240px at 90% 60%, rgba(120,160,255,.12), transparent 60%),
+        rgba(0,0,0,.20);
+      display:flex;
+      align-items:flex-end;
+      padding:16px;
+      overflow:hidden;
+    }
+    .preview .meta{
+      font-size:13px;
+      color:var(--muted);
+      line-height:1.6;
+    }
+    .preview .tag{
+      display:inline-flex;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      margin-bottom:10px;
+      color: var(--text);
+      font-weight:600;
+      font-size:12px;
+    }
+
+    /* sections */
+    section{ margin-top: 22px; }
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+    }
+    .mini{
+      padding:16px;
+      min-height: 120px;
+    }
+    .mini h3{
+      margin:0 0 8px;
+      font-size:16px;
+      letter-spacing:-.2px;
+    }
+    .mini p{
+      margin:0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.6;
+    }
+
+    .split{
+      display:grid;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 12px;
+      align-items:stretch;
+    }
+    .list{
+      padding:18px;
+    }
+    .list h2{ margin:0 0 10px; font-size:20px; }
+    .bullets{ margin:0; padding-left: 18px; color:var(--muted); line-height:1.8; }
+    .bullets li{ margin: 6px 0; }
+
+    .contact{
+      padding:18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .contact .left{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .contact .left .title{ font-weight:650; }
+    .contact .left .sub{ color:var(--muted); font-size:14px; }
+
+    footer{
+      margin-top: 22px;
+      color: rgba(255,255,255,.45);
+      font-size: 12px;
+      padding-top: 16px;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+
+    /* responsive */
+    @media (max-width: 900px){
+      .hero{ grid-template-columns: 1fr; }
+      .hero-right{ min-height: 280px; }
+      h1{ font-size: 38px; }
+      :root{ --meetX: 95px; }
+      .grid3{ grid-template-columns: 1fr; }
+      .split{ grid-template-columns: 1fr; }
+    }
+
+    /* reduce motion */
+    @media (prefers-reduced-motion: reduce){
+      .walker{ animation:none !important; left: var(--meetX) !important; right: var(--meetX) !important; }
+      .final{ opacity:1; }
+      .btn:hover{ transform:none; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <span class="dot"></span>
+        <span>gggyd-kr</span>
+      </div>
+
+      <nav>
+        <a href="#work">Work</a>
+        <a href="#how">How</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="btn primary" href="#contact">문의하기 ↗</a>
+    </header>
+
+    <div class="hero">
+      <div class="card hero-left">
+        <div class="kicker">미니멀 랜딩 · GitHub Pages · 빠른 업데이트</div>
+        <h1>작업을 보여주는<br/>가장 가벼운 홈페이지</h1>
+        <p class="lead">
+          포트폴리오/프로젝트/제품 소개를 한 페이지에 정리하고,
+          수정하면 GitHub에 올리는 것만으로 바로 반영되는 구조로 운영해요.
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" href="#work">프로젝트 보기</a>
+          <a class="btn" href="#how">운영 방식</a>
+        </div>
+
+        <!-- ✅ 졸라맨 “진짜 걷기” 히어로 애니메이션 -->
+        <div class="stage" id="hero-walk">
+          <div class="ground"></div>
+
+          <div class="walker left">
+            <svg viewBox="0 0 100 140" aria-hidden="true">
+              <circle cx="50" cy="22" r="18" fill="#000"/>
+              <g stroke="#000" stroke-width="12" stroke-linecap="round" fill="none">
+                <line x1="50" y1="42" x2="50" y2="82"/>
+                <g class="arm1"><line x1="50" y1="55" x2="25" y2="72"/></g>
+                <g class="arm2"><line x1="50" y1="55" x2="75" y2="72"/></g>
+                <g class="leg1"><line x1="50" y1="82" x2="30" y2="122"/></g>
+                <g class="leg2"><line x1="50" y1="82" x2="70" y2="122"/></g>
+              </g>
+            </svg>
+          </div>
+
+          <div class="walker right">
+            <svg viewBox="0 0 100 140" aria-hidden="true">
+              <circle cx="50" cy="22" r="18" fill="#000"/>
+              <g stroke="#000" stroke-width="12" stroke-linecap="round" fill="none">
+                <line x1="50" y1="42" x2="50" y2="82"/>
+                <g class="arm1"><line x1="50" y1="55" x2="25" y2="72"/></g>
+                <g class="arm2"><line x1="50" y1="55" x2="75" y2="72"/></g>
+                <g class="leg1"><line x1="50" y1="82" x2="30" y2="122"/></g>
+                <g class="leg2"><line x1="50" y1="82" x2="70" y2="122"/></g>
+              </g>
+            </svg>
+          </div>
+
+          <!-- ✅ 완성 이미지 덮어씌우고 싶으면 주석 해제 + 파일명 교체 -->
+          <!-- <img class="final" src="images/final.jpg" alt="" /> -->
+        </div>
+      </div>
+
+      <div class="card hero-right">
+        <div class="preview">
+          <div class="box">
+            <div>
+              <div class="tag">Preview</div>
+              <div class="meta">
+                여기에는 대표 이미지(제품/작업 사진)를 넣으면 좋아.<br/>
+                지금은 박스만 만들어놨어. (이미지 넣는 법 아래 참고)
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="padding:16px 18px; border-top:1px solid rgba(255,255,255,.06); color:var(--muted); font-size:13px;">
+          업데이트 흐름: <b style="color:var(--text)">수정 → 커밋 → Sync</b> (끝)
+        </div>
+      </div>
+    </div>
+
+    <section id="work" class="grid3">
+      <div class="card mini">
+        <h3>01. 프로젝트</h3>
+        <p>팝업/페어/전시에서 쓰이는 시스템 가구, 집기, 공간 구성.</p>
+      </div>
+      <div class="card mini">
+        <h3>02. 제품</h3>
+        <p>리빙 오브제/트레이 등, 기능과 스토리가 동시에 보이는 아이템.</p>
+      </div>
+      <div class="card mini">
+        <h3>03. 클래스</h3>
+        <p>원데이/워크숍 형태의 체험형 프로그램 구성 및 운영.</p>
+      </div>
+    </section>
+
+    <section id="how" class="split">
+      <div class="card list">
+        <h2>운영 방식</h2>
+        <ul class="bullets">
+          <li>코드는 VS Code에서 수정 → GitHub에 올리면 즉시 배포됨</li>
+          <li>도메인 연결 가능 (호스팅 별도 구매 없이 운영 가능)</li>
+          <li>정적 랜딩/포트폴리오에 최적 (회원/결제는 별도 서버 필요)</li>
+        </ul>
+      </div>
+
+      <div class="card list">
+        <h2>다음 확장</h2>
+        <ul class="bullets">
+          <li>프로젝트 카드(썸네일) 추가, 갤러리 섹션</li>
+          <li>문의 폼(Formspree 등) 연동</li>
+          <li>다국어(EN) 토글, SEO 기본 세팅</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="contact" class="card contact">
+      <div class="left">
+        <div class="title">문의 / 협업 제안</div>
+        <div class="sub">메일 또는 인스타그램으로 편하게 연락 주세요.</div>
+      </div>
+      <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <a class="btn" href="mailto:hello@example.com">메일 보내기</a>
+        <a class="btn primary" href="#" onclick="alert('인스타 링크를 여기에 넣으면 돼!')">Instagram</a>
+      </div>
+    </section>
+
+    <footer>
+      © <span id="y"></span> gggyd-kr. Built with GitHub Pages.
+    </footer>
+  </div>
+
+  <script>
+    // footer year
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    // ✅ 도착 후 “걷기 멈추기”
+    // CSS의 --moveTime(1.8s)와 맞추기
+    const MOVE_TIME_MS = 1800;
+    setTimeout(() => {
+      document.querySelectorAll('.walker').forEach(el => {
+        el.style.animationPlayState = 'paused';
+      });
+    }, MOVE_TIME_MS);
+  </script>
+</body>
+</html>
