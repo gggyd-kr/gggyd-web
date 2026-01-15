@@ -1,677 +1,674 @@
-@import url("https://use.typekit.net/pyk6bts.css");
 
 :root {
-  --brand-yellow: #ffd01c;
-  --dark-brown: #0d0d0d;
-  --warm-white: #f6f8ed;
-  --wood-tone: #d4a574;
-  --light-gray: #f5f5f0;
-  --text-primary: #0d0d0d;
-  --text-secondary: #0d0d0d;
+    --brand-yellow: #ffd01c;
+    --dark-brown: #0d0d0d;
+    --warm-white: #f6f8ed;
+    --wood-tone: #D4A574;
+    --light-gray: #F5F5F0;
+    --text-primary: #0d0d0d;
+    --text-secondary: #0d0d0d;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-html,
-body {
-  width: 100%;
-  height: auto;
-  min-height: 100%;
-  overflow-x: hidden;
-  overflow-y: auto;
-  font-family: "futura-pt", sans-serif;
-  background-color: #ffd01c;
-  color: var(--text-primary);
+html, body {
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    font-family: "futura-pt", sans-serif;
+    background-color: #ffd01c;
+    color: var(--text-primary);
 }
 
 /* Work, Shop 페이지 배경색 */
 body:has(.work-page),
 body:has(.shop-page) {
-  background-color: #f6f8ed;
+    background-color: #f6f8ed;
 }
 
 /* Index 페이지에서만 overflow hidden */
 body:has(.gallery-container) {
-  overflow: hidden;
-  height: 100vh;
+    overflow: hidden;
+    height: 100vh;
 }
 
 /* 모바일에서는 스크롤 가능하게 */
 @media (max-width: 910px) {
-  body:has(.gallery-container) {
-    overflow: auto;
-    height: auto;
-  }
+    body:has(.gallery-container) {
+        overflow: auto;
+        height: auto;
+    }
 }
 
 /* Header - 모든 페이지 공통 */
 /* Header - 모든 페이지 공통 */
 header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 1.5rem;
-  background-color: #ffd01c;
-  border-bottom: 1px solid var(--text-primary);
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    background-color: #ffd01c;
+    border-bottom: 1px solid var(--text-primary);
+    z-index: 1000;
 }
 
 /* Work, Shop 페이지 헤더 */
 body:has(.work-page) header,
 body:has(.shop-page) header {
-  background-color: #f6f8ed;
+    background-color: #f6f8ed;
 }
 
 body:has(.work-page) header .logo a,
 body:has(.work-page) header nav a,
 body:has(.shop-page) header .logo a,
 body:has(.shop-page) header nav a {
-  color: #0d0d0d;
+    color: #0d0d0d;
 }
 
 body:has(.work-page) .top-language-switcher a,
 body:has(.work-page) .top-language-switcher .separator,
 body:has(.shop-page) .top-language-switcher a,
 body:has(.shop-page) .top-language-switcher .separator {
-  color: #0d0d0d;
+    color: #0d0d0d;
 }
 
 /* 로고 및 네비게이션 색상 */
 header .logo a,
 header nav a {
-  color: var(--text-primary);
+    color: var(--text-primary);
 }
 
 /* 최상단 언어 전환 버튼 - 숨김 */
 .top-language-switcher {
-  display: none;
+    display: none;
 }
 
 .top-language-switcher .active {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .top-language-switcher .separator {
-  color: white;
-  opacity: 0.6;
+    color: white;
+    opacity: 0.6;
 }
 
 .logo a {
-  font-family: "totalblack-variable", sans-serif;
-  font-weight: 900;
-  font-variation-settings: "wght" 900;
-  font-size: 3rem;
-  color: white;
-  text-decoration: none;
-  text-transform: lowercase;
-  transition: opacity 0.3s ease;
+    font-family: "totalblack-variable", sans-serif;
+    font-weight: 900;
+    font-variation-settings: "wght" 900;
+    font-size: 3rem;
+    color: white;
+    text-decoration: none;
+    text-transform: lowercase;
+    transition: opacity 0.3s ease;
 }
 
 .logo a:hover {
-  opacity: 0.7;
+    opacity: 0.7;
 }
 
 nav {
-  display: flex;
-  gap: 2.5rem;
+    display: flex;
+    gap: 2.5rem;
 }
 
 nav a {
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: white;
-  text-decoration: none;
-  position: relative;
-  transition: opacity 0.3s ease;
-  letter-spacing: 0.02em;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: white;
+    text-decoration: none;
+    position: relative;
+    transition: opacity 0.3s ease;
+    letter-spacing: 0.02em;
 }
 
 nav a::after {
-  content: "";
-  position: absolute;
-  bottom: -5px;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background-color: white;
-  transition: width 0.3s ease;
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: white;
+    transition: width 0.3s ease;
 }
 
 nav a:hover {
-  opacity: 0.7;
+    opacity: 0.7;
 }
 
 nav a:hover::after {
-  width: 100%;
+    width: 100%;
 }
 
 /* Gallery Container - 가로 스크롤 */
 .gallery-container {
-  position: fixed;
-  top: 140px;
-  left: 0;
-  width: 100vw;
-  height: calc(100vh - 140px);
-  display: flex;
-  gap: 2rem;
-  padding: 0 2rem;
-  background-color: #ffd01c;
-  overflow-x: scroll;
-  overflow-y: hidden;
-  scroll-behavior: smooth;
-  cursor: grab;
+    position: fixed;
+    top: 140px;
+    left: 0;
+    width: 100vw;
+    height: calc(100vh - 140px);
+    display: flex;
+    gap: 2rem;
+    padding: 0 2rem;
+    background-color: #ffd01c;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    cursor: grab;
 }
 
 .gallery-container:active {
-  cursor: grabbing;
+    cursor: grabbing;
 }
 
 /* Scrollbar styling */
 .gallery-container::-webkit-scrollbar {
-  height: 8px;
+    height: 8px;
 }
 
 .gallery-container::-webkit-scrollbar-track {
-  background: rgba(13, 13, 13, 0.1);
+    background: rgba(13, 13, 13, 0.1);
 }
 
 .gallery-container::-webkit-scrollbar-thumb {
-  background: #0d0d0d;
-  border-radius: 4px;
+    background: #0d0d0d;
+    border-radius: 4px;
 }
 
 .gallery-container::-webkit-scrollbar-thumb:hover {
-  background: #0d0d0d;
+    background: #0d0d0d;
 }
 
 /* Gallery Items */
 .gallery-item {
-  flex-shrink: 0;
-  height: 100%;
-  display: block;
-  text-decoration: none;
-  overflow: hidden;
+    flex-shrink: 0;
+    height: 100%;
+    display: block;
+    text-decoration: none;
+    overflow: hidden;
 }
 
 .gallery-item img {
-  height: 100%;
-  width: auto;
-  object-fit: cover;
-  display: block;
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+    display: block;
 }
 
 /* Scroll Indicator */
 .scroll-indicator {
-  position: fixed;
-  bottom: 3rem;
-  right: 3rem;
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  color: var(--text-secondary);
-  font-size: 0.9rem;
-  font-weight: 500;
-  letter-spacing: 0.05em;
-  animation: fadeSlide 2s ease-in-out infinite;
-  z-index: 100;
+    position: fixed;
+    bottom: 3rem;
+    right: 3rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    animation: fadeSlide 2s ease-in-out infinite;
+    z-index: 100;
 }
 
 @keyframes fadeSlide {
-  0%,
-  100% {
-    opacity: 0.4;
-    transform: translateX(-10px);
-  }
-  50% {
-    opacity: 1;
-    transform: translateX(0);
-  }
+    0%, 100% {
+        opacity: 0.4;
+        transform: translateX(-10px);
+    }
+    50% {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 /* Responsive */
 @media (max-width: 768px) {
-  /* 모바일 헤더 - 이미지 위 오버레이 */
-  header {
-    padding: 1.5rem 2rem;
-    background: transparent;
-    border-bottom: none;
-    mix-blend-mode: difference;
-  }
+    /* 모바일 헤더 - 이미지 위 오버레이 */
+    header {
+        padding: 1.5rem 2rem;
+        background: transparent;
+        border-bottom: none;
+        mix-blend-mode: difference;
+    }
 
-  .logo a {
-    font-size: 2rem;
-    color: white;
-  }
+    .logo a {
+        font-size: 2rem;
+        color: white;
+    }
 
-  .logo a:hover {
-    opacity: 0.7;
-  }
+    .logo a:hover {
+        opacity: 0.7;
+    }
 
-  /* 모바일 언어 전환 */
-  .top-language-switcher {
-    top: 0.8rem;
-    right: 2rem;
-    font-size: 0.75rem;
-  }
+    /* 모바일 언어 전환 */
+    .top-language-switcher {
+        top: 0.8rem;
+        right: 2rem;
+        font-size: 0.75rem;
+    }
 
-  /* 모바일 메뉴 */
-  nav {
-    gap: 1.2rem;
-  }
+    /* 모바일 메뉴 */
+    nav {
+        gap: 1.2rem;
+    }
 
-  nav a {
-    font-size: 0.85rem;
-    color: white;
-  }
+    nav a {
+        font-size: 0.85rem;
+        color: white;
+    }
 
-  nav a:hover {
-    opacity: 0.7;
-  }
+    nav a:hover {
+        opacity: 0.7;
+    }
 
-  nav a::after {
-    background-color: white;
-  }
+    nav a::after {
+        background-color: white;
+    }
 
-  /* 모바일 갤러리 - 세로 스크롤 */
-  .gallery-container {
+    /* 모바일 갤러리 - 세로 스크롤 */
+    .gallery-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100vw;
+        height: 100vh;
+        flex-direction: column;
+        gap: 0;
+        padding: 0;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        cursor: default;
+    }
+
+    .gallery-item {
+        width: 100%;
+        height: auto;
+        min-height: 60vh;
+    }
+
+    .gallery-item img {
+        width: 100%;
+        height: auto;
+        min-height: 60vh;
+        object-fit: cover;
+    }
+
+    .scroll-indicator {
+        display: none;
+    }
+}
+
+/* 태블릿 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    header {
+        padding: 1.8rem 2.5rem;
+    }
+
+    .logo a {
+        font-size: 1.3rem;
+    }
+
+    nav {
+        gap: 2rem;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+    }
+
+    .scroll-indicator {
+        bottom: 2.5rem;
+        right: 2.5rem;
+    }
+}
+
+/* Page Transitions */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+body {
+    animation: fadeIn 0.5s ease-in;
+}
+
+/* Menu Toggle Button */
+.menu-toggle {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 2rem;
+    z-index: 1002;
+}
+
+.menu-toggle span {
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-primary);
+    transition: all 0.3s ease;
+}
+
+.menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+}
+
+/* Full Page Menu Overlay */
+.menu-overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    flex-direction: column;
-    gap: 0;
-    padding: 0;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    cursor: default;
-  }
-
-  .gallery-item {
-    width: 100%;
-    height: auto;
-    min-height: 60vh;
-  }
-
-  .gallery-item img {
-    width: 100%;
-    height: auto;
-    min-height: 60vh;
-    object-fit: cover;
-  }
-
-  .scroll-indicator {
-    display: none;
-  }
-}
-
-/* 태블릿 */
-@media (min-width: 769px) and (max-width: 1024px) {
-  header {
-    padding: 1.8rem 2.5rem;
-  }
-
-  .logo a {
-    font-size: 1.3rem;
-  }
-
-  nav {
-    gap: 2rem;
-  }
-
-  nav a {
-    font-size: 0.9rem;
-  }
-
-  .scroll-indicator {
-    bottom: 2.5rem;
-    right: 2.5rem;
-  }
-}
-
-/* Page Transitions */
-@keyframes fadeIn {
-  from {
+    background-color: #4404b3;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-body {
-  animation: fadeIn 0.5s ease-in;
-}
-
-/* Menu Toggle Button */
-.menu-toggle {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 20px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  margin-left: 2rem;
-  z-index: 1002;
-}
-
-.menu-toggle span {
-  width: 100%;
-  height: 2px;
-  background-color: var(--text-primary);
-  transition: all 0.3s ease;
-}
-
-.menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(7px, 7px);
-}
-
-.menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -7px);
-}
-
-/* Full Page Menu Overlay */
-.menu-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #4404b3;
-  z-index: 1001;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .menu-overlay.active {
-  opacity: 1;
-  visibility: visible;
+    opacity: 1;
+    visibility: visible;
 }
 
 /* Close Button */
 .menu-close {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  width: 40px;
-  height: 40px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 1002;
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 40px;
+    height: 40px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    z-index: 1002;
 }
 
 .menu-close::before,
 .menu-close::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 30px;
-  height: 2px;
-  background-color: #ffd01c;
-  transition: background-color 0.3s ease;
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 30px;
+    height: 2px;
+    background-color: #ffd01c;
+    transition: background-color 0.3s ease;
 }
 
 .menu-close::before {
-  transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg);
 }
 
 .menu-close::after {
-  transform: translate(-50%, -50%) rotate(-45deg);
+    transform: translate(-50%, -50%) rotate(-45deg);
 }
 
 .menu-close:hover::before,
 .menu-close:hover::after {
-  background-color: rgba(255, 208, 28, 0.6);
+    background-color: rgba(255, 208, 28, 0.6);
 }
 
 .menu-content {
-  text-align: center;
+    text-align: center;
 }
 
 .overlay-nav {
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-bottom: 4rem;
 }
 
 .overlay-nav a {
-  font-size: 3rem;
-  font-weight: 700;
-  color: #ffd01c;
-  text-decoration: none;
-  transition: opacity 0.3s ease;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #ffd01c;
+    text-decoration: none;
+    transition: opacity 0.3s ease;
 }
 
 .overlay-nav a:hover {
-  opacity: 0.6;
+    opacity: 0.6;
 }
 
 .overlay-language {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  font-size: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-size: 1.5rem;
 }
 
 .overlay-language .lang-link {
-  color: #ffd01c;
-  text-decoration: none;
-  opacity: 0.6;
-  transition: opacity 0.3s ease;
+    color: #ffd01c;
+    text-decoration: none;
+    opacity: 0.6;
+    transition: opacity 0.3s ease;
 }
 
 .overlay-language .lang-link.active {
-  opacity: 1;
-  font-weight: 600;
+    opacity: 1;
+    font-weight: 600;
 }
 
 .overlay-language .lang-link:hover {
-  opacity: 1;
+    opacity: 1;
 }
 
 .overlay-language .separator {
-  color: #ffd01c;
-  opacity: 0.6;
+    color: #ffd01c;
+    opacity: 0.6;
 }
 
 /* Work, Shop 페이지 메뉴 오버레이 */
 body:has(.work-page) .menu-overlay,
 body:has(.shop-page) .menu-overlay {
-  background-color: #4404b3;
+    background-color: #4404b3;
 }
 
 /* Mobile - 910px 이하 Index 페이지 (아이패드 프로 12인치 가로 2/3) */
 @media (max-width: 910px) {
-  /* 로고 크기 작게 */
-  .logo a {
-    font-size: 2rem;
-  }
-
-  /* 모바일에서 Index 헤더 mix-blend-mode 제거 */
-  body:has(.gallery-container) header {
-    background-color: #0d0d0d !important;
-    border-bottom: 1px solid #ffd01c;
-    mix-blend-mode: normal !important;
-  }
-
-  body:has(.gallery-container) header .logo a,
-  body:has(.gallery-container) header nav a {
-    color: #ffd01c !important;
-  }
-
-  body:has(.gallery-container) .menu-toggle span {
-    background-color: #ffd01c !important;
-  }
-
-  body:has(.gallery-container) .top-language-switcher {
-    mix-blend-mode: normal !important;
-  }
-
-  body:has(.gallery-container) .top-language-switcher a,
-  body:has(.gallery-container) .top-language-switcher .separator {
-    color: #ffd01c !important;
-  }
-
-  /* 모바일에서 body 배경도 검정 */
-  body:has(.gallery-container) {
-    background-color: #0d0d0d !important;
-  }
-
-  /* 모바일에서 갤러리 헤더 아래로 */
-  body:has(.gallery-container) .gallery-container {
-    position: relative;
-    top: 0;
-    height: auto;
-    min-height: calc(100vh - 75px);
-    margin-top: 75px;
-    flex-direction: column;
-    overflow-x: hidden;
-    overflow-y: auto;
-    padding: 2rem 2rem 1rem 2rem;
-    gap: 1.5rem;
-    background-color: #0d0d0d;
-  }
-
-  /* 갤러리 아이템 모바일 */
-  body:has(.gallery-container) .gallery-item {
-    height: auto;
-    width: 90%;
-    margin: 0 auto;
-  }
-
-  body:has(.gallery-container) .gallery-item img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-  }
+    /* 로고 크기 작게 */
+    .logo a {
+        font-size: 2rem;
+    }
+    
+    /* 모바일에서 Index 헤더 mix-blend-mode 제거 */
+    body:has(.gallery-container) header {
+        background-color: #0d0d0d !important;
+        border-bottom: 1px solid #ffd01c;
+        mix-blend-mode: normal !important;
+    }
+    
+    body:has(.gallery-container) header .logo a,
+    body:has(.gallery-container) header nav a {
+        color: #ffd01c !important;
+    }
+    
+    body:has(.gallery-container) .menu-toggle span {
+        background-color: #ffd01c !important;
+    }
+    
+    body:has(.gallery-container) .top-language-switcher {
+        mix-blend-mode: normal !important;
+    }
+    
+    body:has(.gallery-container) .top-language-switcher a,
+    body:has(.gallery-container) .top-language-switcher .separator {
+        color: #ffd01c !important;
+    }
+    
+    /* 모바일에서 body 배경도 검정 */
+    body:has(.gallery-container) {
+        background-color: #0d0d0d !important;
+    }
+    
+    /* 모바일에서 갤러리 헤더 아래로 */
+    body:has(.gallery-container) .gallery-container {
+        position: relative;
+        top: 0;
+        height: auto;
+        min-height: calc(100vh - 75px);
+        margin-top: 75px;
+        flex-direction: column;
+        overflow-x: hidden;
+        overflow-y: auto;
+        padding: 2rem 2rem 1rem 2rem;
+        gap: 1.5rem;
+        background-color: #0d0d0d;
+    }
+    
+    /* 갤러리 아이템 모바일 */
+    body:has(.gallery-container) .gallery-item {
+        height: auto;
+        width: 90%;
+        margin: 0 auto;
+    }
+    
+    body:has(.gallery-container) .gallery-item img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
 }
 
 /* Desktop - 911px 이상에서 로고 크기 및 헤더 스타일 유지 */
 @media (min-width: 911px) {
-  .logo a {
-    font-size: 3rem;
-  }
-
-  /* 노란 배경 헤더 스타일 유지 */
-  header {
-    background-color: #ffd01c;
-    border-bottom: 1px solid var(--text-primary);
-    padding: 1rem 1.5rem;
-  }
-
-  header .logo a,
-  header nav a {
-    color: var(--text-primary);
-  }
-
-  nav a {
-    font-size: 1.3rem;
-    font-weight: 600;
-  }
-
-  .menu-toggle span {
-    background-color: var(--text-primary);
-  }
+    .logo a {
+        font-size: 3rem;
+    }
+    
+    /* 노란 배경 헤더 스타일 유지 */
+    header {
+        background-color: #ffd01c;
+        border-bottom: 1px solid var(--text-primary);
+        padding: 1rem 1.5rem;
+    }
+    
+    header .logo a,
+    header nav a {
+        color: var(--text-primary);
+    }
+    
+    nav a {
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+    
+    .menu-toggle span {
+        background-color: var(--text-primary);
+    }
 }
 
 /* Landing Overlay */
 .landing-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: #ffd01c;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10000;
-  opacity: 1;
-  transition: opacity 0.5s ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #ffd01c;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    opacity: 1;
+    transition: opacity 0.5s ease;
 }
 
 .landing-overlay .logo-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
 }
 
 .landing-overlay .landing-logo {
-  font-family: "totalblack-variable", sans-serif;
-  font-weight: 900;
-  font-variation-settings: "wght" 900;
-  font-size: 10rem;
-  color: #0d0d0d;
-  text-transform: lowercase;
-  letter-spacing: -0.02em;
-  cursor: default;
-  user-select: none;
+    font-family: "totalblack-variable", sans-serif;
+    font-weight: 900;
+    font-variation-settings: "wght" 900;
+    font-size: 10rem;
+    color: #0d0d0d;
+    text-transform: lowercase;
+    letter-spacing: -0.02em;
+    cursor: default;
+    user-select: none;
 }
 
 .landing-overlay .enter-button {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #0d0d0d;
-  background: transparent;
-  padding: 1rem 3rem;
-  border: 2px solid #0d0d0d;
-  cursor: pointer;
-  transition: all 0.3s ease;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #0d0d0d;
+    background: transparent;
+    padding: 1rem 3rem;
+    border: 2px solid #0d0d0d;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
 .landing-overlay .enter-button:hover {
-  background-color: #0d0d0d;
-  color: #ffd01c;
+    background-color: #0d0d0d;
+    color: #ffd01c;
 }
 
 /* 랜딩 오버레이 반응형 */
 @media (max-width: 768px) {
-  .landing-overlay .landing-logo {
-    font-size: 6rem;
-  }
-
-  .landing-overlay .enter-button {
-    font-size: 1.2rem;
-    padding: 0.8rem 2.5rem;
-  }
+    .landing-overlay .landing-logo {
+        font-size: 6rem;
+    }
+    
+    .landing-overlay .enter-button {
+        font-size: 1.2rem;
+        padding: 0.8rem 2.5rem;
+    }
 }
 
 @media (max-width: 480px) {
-  .landing-overlay .landing-logo {
-    font-size: 4rem;
-  }
-
-  .landing-overlay .logo-container {
-    gap: 2rem;
-  }
-
-  .landing-overlay .enter-button {
-    font-size: 1rem;
-    padding: 0.7rem 2rem;
-  }
+    .landing-overlay .landing-logo {
+        font-size: 4rem;
+    }
+    
+    .landing-overlay .logo-container {
+        gap: 2rem;
+    }
+    
+    .landing-overlay .enter-button {
+        font-size: 1rem;
+        padding: 0.7rem 2rem;
+    }
 }
