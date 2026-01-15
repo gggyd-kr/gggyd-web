@@ -1,4 +1,8 @@
 /* Product Detail Page */
+body:has(.product-detail) {
+    overflow-y: auto;
+}
+
 .product-detail {
     display: grid;
     grid-template-columns: 2fr 1fr;
@@ -32,10 +36,30 @@
 .product-info {
     padding: 2rem 3rem 3rem 3rem;
     background-color: var(--warm-white);
+    position: -webkit-sticky; /* 사파리용 */
     position: sticky;
     top: 100px;
-    height: fit-content;
+    max-height: calc(100vh - 100px);
+    overflow-y: auto;
     align-self: start;
+}
+
+/* 정보 영역 스크롤바 스타일 */
+.product-info::-webkit-scrollbar {
+    width: 6px;
+}
+
+.product-info::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+.product-info::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+}
+
+.product-info::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
 }
 
 .product-info-inner {
@@ -285,7 +309,10 @@
 
     .gallery-images img:first-child {
         display: block;
-        margin-bottom: 1rem;
+        margin-bottom: 1.5rem;
+        width: 100%;
+        aspect-ratio: 3/2;
+        object-fit: cover;
     }
 
     /* 모바일 썸네일 그리드 */
@@ -312,6 +339,8 @@
     .product-info {
         padding: 2rem 1.5rem;
         position: static;
+        max-height: none;
+        overflow-y: visible;
     }
 
     .product-info-inner {

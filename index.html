@@ -1,146 +1,123 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>감각공예단 - Sensory Craft Group</title>
-    <link rel="stylesheet" href="https://use.typekit.net/wqo4akj.css" />
-    <link rel="stylesheet" href="css/styles.css" />
-  </head>
-  <body>
+    <script src="js/fonts.js"></script>
+    <link rel="stylesheet" href="https://use.typekit.net/wqo4akj.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
     <!-- Landing Overlay -->
     <div id="landingOverlay" class="landing-overlay">
-      <div class="logo-container">
-        <h1 class="landing-logo">gggyd</h1>
-        <button class="enter-button" onclick="">Coming Soon</button>
-      </div>
+        <div class="logo-container">
+            <h1 class="landing-logo">gggyd</h1>
+            <button class="enter-button" onclick="hideLanding()">Enter</button>
+        </div>
     </div>
 
     <!-- Language Switcher - Top Right -->
     <div class="top-language-switcher">
-      <a href="#" class="active">KR</a>
-      <span class="separator">/</span>
-      <a href="#">EN</a>
+        <a href="#" class="active">KR</a>
+        <span class="separator">/</span>
+        <a href="#">EN</a>
     </div>
 
     <header>
-      <div class="logo">
-        <a href="index.html">gggyd</a>
-      </div>
-      <nav>
-        <a href="about.html">About</a>
-        <a href="work.html">Work</a>
-        <a href="shop.html">Shop</a>
-        <a href="contact.html">Contact</a>
-        <button class="menu-toggle" id="menuToggle">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-      </nav>
+        <div class="logo">
+            <a href="index.html">gggyd</a>
+        </div>
+        <nav>
+            <a href="about.html">About</a>
+            <a href="work.html">Work</a>
+            <a href="shop.html">Shop</a>
+            <a href="contact.html">Contact</a>
+            <button class="menu-toggle" id="menuToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
     </header>
 
     <!-- Full Page Menu Overlay -->
     <div class="menu-overlay" id="menuOverlay">
-      <button class="menu-close" id="menuClose"></button>
-      <div class="menu-content">
-        <nav class="overlay-nav">
-          <a href="about.html">About</a>
-          <a href="work.html">Work</a>
-          <a href="shop.html">Shop</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-        <div class="overlay-language">
-          <a href="#" class="lang-link active" data-lang="kr">KR</a>
-          <span class="separator">/</span>
-          <a href="#" class="lang-link" data-lang="en">EN</a>
+        <button class="menu-close" id="menuClose"></button>
+        <div class="menu-content">
+            <nav class="overlay-nav">
+                <a href="about.html">About</a>
+                <a href="work.html">Work</a>
+                <a href="shop.html">Shop</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+            <div class="overlay-language">
+                <a href="#" class="lang-link active" data-lang="kr">KR</a>
+                <span class="separator">/</span>
+                <a href="#" class="lang-link" data-lang="en">EN</a>
+            </div>
         </div>
-      </div>
     </div>
 
     <div class="gallery-container">
-      <!-- Project 1 -->
-      <a href="project-detail.html?id=1" class="gallery-item">
-        <img
-          src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&h=1200&fit=crop"
-          alt="조각보 트레이"
-        />
-      </a>
+        <!-- Project 1 -->
+        <a href="project-detail.html?id=1" class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&h=1200&fit=crop" alt="조각보 트레이">
+        </a>
 
-      <!-- Project 2 -->
-      <a href="project-detail.html?id=2" class="gallery-item">
-        <img
-          src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1400&h=900&fit=crop"
-          alt="백화점 팝업부스"
-        />
-      </a>
+        <!-- Project 2 -->
+        <a href="project-detail.html?id=2" class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1400&h=900&fit=crop" alt="백화점 팝업부스">
+        </a>
 
-      <!-- Project 3 -->
-      <a href="project-detail.html?id=3" class="gallery-item">
-        <img
-          src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=700&h=1200&fit=crop"
-          alt="우드 오브제"
-        />
-      </a>
+        <!-- Project 3 -->
+        <a href="project-detail.html?id=3" class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=700&h=1200&fit=crop" alt="우드 오브제">
+        </a>
 
-      <!-- Project 4 -->
-      <a href="project-detail.html?id=4" class="gallery-item">
-        <img
-          src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=1200&h=900&fit=crop"
-          alt="목공 가구"
-        />
-      </a>
+        <!-- Project 4 -->
+        <a href="project-detail.html?id=4" class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=1200&h=900&fit=crop" alt="목공 가구">
+        </a>
 
-      <!-- Project 5 -->
-      <a href="project-detail.html?id=5" class="gallery-item">
-        <img
-          src="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=800&h=1200&fit=crop"
-          alt="전통 공예"
-        />
-      </a>
+        <!-- Project 5 -->
+        <a href="project-detail.html?id=5" class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=800&h=1200&fit=crop" alt="전통 공예">
+        </a>
 
-      <!-- Project 6 -->
-      <a href="project-detail.html?id=6" class="gallery-item">
-        <img
-          src="https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?w=1300&h=900&fit=crop"
-          alt="우드 가구"
-        />
-      </a>
+        <!-- Project 6 -->
+        <a href="project-detail.html?id=6" class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?w=1300&h=900&fit=crop" alt="우드 가구">
+        </a>
 
-      <!-- Project 7 -->
-      <a href="project-detail.html?id=7" class="gallery-item">
-        <img
-          src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=750&h=1200&fit=crop"
-          alt="목공 디테일"
-        />
-      </a>
+        <!-- Project 7 -->
+        <a href="project-detail.html?id=7" class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=750&h=1200&fit=crop" alt="목공 디테일">
+        </a>
 
-      <!-- Project 8 -->
-      <a href="project-detail.html?id=8" class="gallery-item">
-        <img
-          src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=1400&h=900&fit=crop"
-          alt="공간 작업"
-        />
-      </a>
+        <!-- Project 8 -->
+        <a href="project-detail.html?id=8" class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=1400&h=900&fit=crop" alt="공간 작업">
+        </a>
     </div>
 
     <div class="scroll-indicator">
-      <span>Scroll →</span>
+        <span>Scroll →</span>
     </div>
 
     <script src="js/script.js"></script>
     <script src="js/language-switcher.js"></script>
     <script src="js/menu-toggle.js"></script>
-
+    
     <script>
-      // 랜딩 오버레이 숨기기
-      function hideLanding() {
-        const overlay = document.getElementById("landingOverlay");
-        overlay.style.opacity = "0";
-        setTimeout(() => {
-          overlay.style.display = "none";
-        }, 500);
-      }
+        // 랜딩 오버레이 숨기기
+        function hideLanding() {
+            const overlay = document.getElementById('landingOverlay');
+            overlay.style.opacity = '0';
+            setTimeout(() => {
+                overlay.style.display = 'none';
+            }, 500);
+        }
     </script>
-  </body>
+</body>
 </html>

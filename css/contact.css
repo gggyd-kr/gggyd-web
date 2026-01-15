@@ -1,162 +1,167 @@
 /* Contact Page */
 .contact-page {
-  min-height: 100vh;
-  padding-top: 0;
-  background-color: var(--warm-white);
+    min-height: 100vh;
+    padding-top: 0;
+    background-color: var(--warm-white);
 }
 
 .contact-container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  max-width: 100%;
-  min-height: calc(100vh - 85px);
-  margin-top: 85px;
-  padding: 0;
-  gap: 0;
-  position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 100%;
+    min-height: calc(100vh - 85px);
+    margin-top: 85px;
+    padding: 0;
+    gap: 0;
+    position: relative;
 }
 
 /* 중앙 세로 라인 - 헤더부터 화면 끝까지 */
 .contact-container::before {
-  content: "";
-  position: fixed;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 1px;
-  background-color: var(--text-primary);
-  transform: translateX(-50%);
-  z-index: 999;
+    content: '';
+    position: fixed;
+    left: 50%;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: var(--text-primary);
+    transform: translateX(-50%);
+    z-index: 999;
 }
 
 /* Contact Information */
 .contact-info {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem;
 }
 
 .contact-title {
-  font-size: 2.5rem;
-  font-weight: 700;
-  color: var(--text-primary);
-  margin-bottom: 3rem;
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 3rem;
 }
 
 .info-item {
-  margin-bottom: 2rem;
+    margin-bottom: 2rem;
 }
 
 .info-label {
-  display: block;
-  font-size: 0.9rem;
-  color: var(--text-primary);
-  margin-bottom: 0.5rem;
-  opacity: 0.6;
+    display: block;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+    opacity: 0.6;
 }
 
 .info-link {
-  font-size: 1.1rem;
-  color: var(--text-primary);
-  text-decoration: none;
-  transition: opacity 0.3s ease;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: opacity 0.3s ease;
 }
 
 .info-link:hover {
-  opacity: 0.6;
+    opacity: 0.6;
 }
 
 /* Map Section */
 .map-section {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: calc(100vh - 85px);
 }
 
 .map-address {
-  padding: 2rem;
-  font-size: 1rem;
-  color: var(--text-primary);
-  text-align: center;
-  background-color: var(--warm-white);
+    padding: 2rem;
+    font-size: 1rem;
+    color: var(--text-primary);
+    text-align: center;
+    background-color: var(--warm-white);
+    flex-shrink: 0;
 }
 
 .brand-name {
-  font-weight: 700;
+    font-weight: 700;
 }
 
 .contact-map {
-  flex: 1;
-  width: 100%;
-  position: relative;
+    flex: 1;
+    width: 100%;
+    min-height: 500px;
+    position: relative;
 }
 
 .contact-map iframe {
-  display: block;
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 /* Responsive - Tablet */
 @media (max-width: 1024px) {
-  .contact-page {
-    padding-top: 0;
-  }
+    .contact-page {
+        padding-top: 0;
+    }
 
-  .contact-container {
-    height: calc(100vh - 80px);
-    margin-top: 80px;
-  }
+    .contact-container {
+        height: calc(100vh - 80px);
+        margin-top: 80px;
+    }
+    
+    .contact-container::before {
+        top: -80px;
+    }
 
-  .contact-container::before {
-    top: -80px;
-  }
-
-  .contact-text {
-    font-size: 1rem;
-  }
+    .contact-text {
+        font-size: 1rem;
+    }
 }
 
 /* Responsive - Mobile */
 @media (max-width: 768px) {
-  .contact-page {
-    padding-top: 0;
-  }
+    .contact-page {
+        padding-top: 0;
+    }
 
-  .contact-container {
-    grid-template-columns: 1fr;
-    height: auto;
-    min-height: calc(100vh - 75px);
-    margin-top: 75px;
-  }
+    .contact-container {
+        grid-template-columns: 1fr;
+        height: auto;
+        min-height: calc(100vh - 75px);
+        margin-top: 75px;
+    }
+    
+    /* 모바일에서 중앙 라인 제거 */
+    .contact-container::before {
+        display: none;
+    }
 
-  /* 모바일에서 중앙 라인 제거 */
-  .contact-container::before {
-    display: none;
-  }
+    .contact-info {
+        padding: 2rem 1.5rem;
+    }
 
-  .contact-info {
-    padding: 2rem 1.5rem;
-  }
-
-  .contact-text {
-    font-size: 0.95rem;
-    line-height: 1.8;
-  }
-
-  .contact-map {
-    min-height: 400px;
-  }
+    .contact-text {
+        font-size: 0.95rem;
+        line-height: 1.8;
+    }
+    
+    .contact-map {
+        min-height: 400px;
+    }
 }
 
 /* Small Mobile */
 @media (max-width: 480px) {
-  .contact-info {
-    padding: 1.5rem 1rem;
-  }
+    .contact-info {
+        padding: 1.5rem 1rem;
+    }
 
-  .contact-text {
-    font-size: 0.9rem;
-  }
+    .contact-text {
+        font-size: 0.9rem;
+    }
 }
