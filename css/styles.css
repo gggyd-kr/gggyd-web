@@ -397,7 +397,9 @@ body {
   justify-content: center;
   opacity: 0;
   visibility: hidden;
-  transition: opacity 0.3s ease, visibility 0.3s ease;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
 }
 
 .menu-overlay.active {
@@ -619,16 +621,92 @@ body:has(.shop-page) .menu-overlay {
   gap: 3rem;
 }
 
-.landing-overlay .landing-logo {
-  font-family: "totalblack-variable", sans-serif;
-  font-weight: 900;
-  font-variation-settings: "wght" 900;
-  font-size: 10rem;
-  color: #0d0d0d;
-  text-transform: lowercase;
-  letter-spacing: -0.02em;
-  cursor: default;
-  user-select: none;
+/* SVG 애니메이션 로고 */
+.landing-logo-wrapper {
+  width: 500px;
+  height: auto;
+}
+
+#animatedLogo {
+  width: 100%;
+  height: auto;
+}
+
+.logo-piece {
+  fill: #0d0d0d;
+  transform-origin: center;
+  animation: pieceGather 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+/* 각 조각마다 다른 시작 위치와 타이밍 */
+.logo-piece:nth-child(1) {
+  animation-delay: 0s;
+  transform: translate(-200px, -150px) rotate(45deg);
+}
+.logo-piece:nth-child(2) {
+  animation-delay: 0.05s;
+  transform: translate(-180px, 100px) rotate(-30deg);
+}
+.logo-piece:nth-child(3) {
+  animation-delay: 0.1s;
+  transform: translate(220px, 120px) rotate(60deg);
+}
+.logo-piece:nth-child(4) {
+  animation-delay: 0.15s;
+  transform: translate(-150px, -80px) rotate(-45deg);
+}
+.logo-piece:nth-child(5) {
+  animation-delay: 0.2s;
+  transform: translate(150px, -120px) rotate(90deg);
+}
+.logo-piece:nth-child(6) {
+  animation-delay: 0.25s;
+  transform: translate(-100px, 150px) rotate(-60deg);
+}
+.logo-piece:nth-child(7) {
+  animation-delay: 0.3s;
+  transform: translate(180px, -100px) rotate(30deg);
+}
+.logo-piece:nth-child(8) {
+  animation-delay: 0.35s;
+  transform: translate(-220px, 80px) rotate(-90deg);
+}
+.logo-piece:nth-child(9) {
+  animation-delay: 0.4s;
+  transform: translate(200px, 140px) rotate(45deg);
+}
+.logo-piece:nth-child(10) {
+  animation-delay: 0.45s;
+  transform: translate(-160px, -120px) rotate(-30deg);
+}
+.logo-piece:nth-child(11) {
+  animation-delay: 0.5s;
+  transform: translate(140px, 90px) rotate(60deg);
+}
+.logo-piece:nth-child(12) {
+  animation-delay: 0.55s;
+  transform: translate(190px, -90px) rotate(-45deg);
+}
+.logo-piece:nth-child(13) {
+  animation-delay: 0.6s;
+  transform: translate(-140px, 110px) rotate(30deg);
+}
+.logo-piece:nth-child(14) {
+  animation-delay: 0.65s;
+  transform: translate(210px, -60px) rotate(-60deg);
+}
+
+@keyframes pieceGather {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
 }
 
 .landing-overlay .enter-button {
@@ -649,19 +727,18 @@ body:has(.shop-page) .menu-overlay {
 
 /* 랜딩 오버레이 반응형 */
 @media (max-width: 768px) {
-  .landing-overlay .landing-logo {
-    font-size: 6rem;
+  .landing-logo-wrapper {
+    width: 350px;
   }
 
   .landing-overlay .enter-button {
-    font-size: 1.2rem;
-    padding: 0.8rem 2.5rem;
+    display: none;
   }
 }
 
 @media (max-width: 480px) {
-  .landing-overlay .landing-logo {
-    font-size: 4rem;
+  .landing-logo-wrapper {
+    width: 280px;
   }
 
   .landing-overlay .logo-container {
@@ -669,7 +746,6 @@ body:has(.shop-page) .menu-overlay {
   }
 
   .landing-overlay .enter-button {
-    font-size: 1rem;
-    padding: 0.7rem 2rem;
+    display: none;
   }
 }
