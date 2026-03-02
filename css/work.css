@@ -2,7 +2,7 @@
 .work-page {
     min-height: 100vh;
     padding-top: 100px;
-    background-color: #f6f8ed;
+    background-color: #ffffff;
     overflow-y: auto;
 }
 
@@ -12,16 +12,16 @@
 }
 
 .work-page::-webkit-scrollbar-track {
-    background: rgba(13, 13, 13, 0.1);
+    background: #ffffff;
 }
 
 .work-page::-webkit-scrollbar-thumb {
-    background: #0d0d0d;
+    background: var(--brand-yellow);
     border-radius: 4px;
 }
 
 .work-page::-webkit-scrollbar-thumb:hover {
-    background: #0d0d0d;
+    background: var(--brand-yellow);
 }
 
 /* Body 전체 스크롤바 (Work 페이지용) */
@@ -30,16 +30,16 @@ body:has(.work-page)::-webkit-scrollbar {
 }
 
 body:has(.work-page)::-webkit-scrollbar-track {
-    background: rgba(13, 13, 13, 0.1);
+    background: #ffffff;
 }
 
 body:has(.work-page)::-webkit-scrollbar-thumb {
-    background: #0d0d0d;
+    background: var(--brand-yellow);
     border-radius: 4px;
 }
 
 body:has(.work-page)::-webkit-scrollbar-thumb:hover {
-    background: #0d0d0d;
+    background: var(--brand-yellow);
 }
 
 /* Category Filter */

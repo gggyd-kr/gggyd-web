@@ -26,10 +26,14 @@ body {
   color: var(--text-primary);
 }
 
-/* Work, Shop 페이지 배경색 */
+/* 비랜딩 페이지 배경색 */
 body:has(.work-page),
-body:has(.shop-page) {
-  background-color: #f6f8ed;
+body:has(.shop-page),
+body:has(.about-page),
+body:has(.contact-page),
+body:has(.project-detail-new),
+body:has(.product-detail) {
+  background-color: #ffffff;
 }
 
 /* Index 페이지에서만 overflow hidden */
@@ -62,24 +66,56 @@ header {
   z-index: 1000;
 }
 
-/* Work, Shop 페이지 헤더 */
+/* 비랜딩 페이지 헤더 */
 body:has(.work-page) header,
-body:has(.shop-page) header {
-  background-color: #f6f8ed;
+body:has(.shop-page) header,
+body:has(.about-page) header,
+body:has(.contact-page) header,
+body:has(.project-detail-new) header,
+body:has(.product-detail) header {
+  background-color: #ffffff;
+  border-bottom: 1px solid var(--brand-yellow);
+  mix-blend-mode: normal;
 }
 
 body:has(.work-page) header .logo a,
 body:has(.work-page) header nav a,
 body:has(.shop-page) header .logo a,
-body:has(.shop-page) header nav a {
+body:has(.shop-page) header nav a,
+body:has(.about-page) header .logo a,
+body:has(.about-page) header nav a,
+body:has(.contact-page) header .logo a,
+body:has(.contact-page) header nav a,
+body:has(.project-detail-new) header .logo a,
+body:has(.project-detail-new) header nav a,
+body:has(.product-detail) header .logo a,
+body:has(.product-detail) header nav a {
   color: #0d0d0d;
 }
 
 body:has(.work-page) .top-language-switcher a,
 body:has(.work-page) .top-language-switcher .separator,
 body:has(.shop-page) .top-language-switcher a,
-body:has(.shop-page) .top-language-switcher .separator {
+body:has(.shop-page) .top-language-switcher .separator,
+body:has(.about-page) .top-language-switcher a,
+body:has(.about-page) .top-language-switcher .separator,
+body:has(.contact-page) .top-language-switcher a,
+body:has(.contact-page) .top-language-switcher .separator,
+body:has(.project-detail-new) .top-language-switcher a,
+body:has(.project-detail-new) .top-language-switcher .separator,
+body:has(.product-detail) .top-language-switcher a,
+body:has(.product-detail) .top-language-switcher .separator {
   color: #0d0d0d;
+}
+
+/* 비랜딩 페이지 nav 호버 라인 */
+body:has(.work-page) nav a::after,
+body:has(.shop-page) nav a::after,
+body:has(.about-page) nav a::after,
+body:has(.contact-page) nav a::after,
+body:has(.project-detail-new) nav a::after,
+body:has(.product-detail) nav a::after {
+  background-color: var(--brand-yellow);
 }
 
 /* 로고 및 네비게이션 색상 */
@@ -103,18 +139,21 @@ header nav a {
 }
 
 .logo a {
-  font-family: "totalblack-variable", sans-serif;
-  font-weight: 700;
-  font-variation-settings: "wght" 700;
-  font-size: 3rem;
-  color: white;
+  color: #0d0d0d;
   text-decoration: none;
-  text-transform: lowercase;
+  display: flex;
+  align-items: center;
   transition: opacity 0.3s ease;
 }
 
 .logo a:hover {
   opacity: 0.7;
+}
+
+.logo-svg {
+  height: 2.2rem;
+  width: auto;
+  display: block;
 }
 
 nav {
@@ -172,22 +211,43 @@ nav a:hover::after {
   cursor: grabbing;
 }
 
-/* Scrollbar styling */
+/* 전역 스크롤바 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #ffffff;
+  border-left: 1px solid var(--brand-yellow);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--brand-yellow);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-yellow);
+}
+
+/* 갤러리 가로 스크롤바 */
 .gallery-container::-webkit-scrollbar {
-  height: 8px;
+  height: 6px;
 }
 
 .gallery-container::-webkit-scrollbar-track {
-  background: rgba(13, 13, 13, 0.1);
+  background: #ffffff;
+  border-top: 1px solid var(--brand-yellow);
 }
 
 .gallery-container::-webkit-scrollbar-thumb {
-  background: #0d0d0d;
-  border-radius: 4px;
+  background: var(--brand-yellow);
+  border-radius: 3px;
 }
 
 .gallery-container::-webkit-scrollbar-thumb:hover {
-  background: #0d0d0d;
+  background: var(--brand-yellow);
 }
 
 /* Gallery Items */
@@ -244,9 +304,8 @@ nav a:hover::after {
     mix-blend-mode: difference;
   }
 
-  .logo a {
-    font-size: 2rem;
-    color: white;
+  .logo-svg {
+    height: 1.8rem;
   }
 
   .logo a:hover {
@@ -507,8 +566,8 @@ body:has(.shop-page) .menu-overlay {
 /* Mobile - 910px 이하 Index 페이지 (아이패드 프로 12인치 가로 2/3) */
 @media (max-width: 910px) {
   /* 로고 크기 작게 */
-  .logo a {
-    font-size: 2rem;
+  .logo-svg {
+    height: 1.8rem;
   }
 
   /* 모바일에서 Index 헤더 mix-blend-mode 제거 */
@@ -588,6 +647,10 @@ body:has(.shop-page) .menu-overlay {
     color: var(--text-primary);
   }
 
+  .logo-svg {
+    height: 2.2rem;
+  }
+
   nav a {
     font-size: 1.3rem;
     font-weight: 600;
@@ -638,62 +701,62 @@ body:has(.shop-page) .menu-overlay {
   animation: pieceGather 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
-/* 각 조각마다 다른 시작 위치와 타이밍 */
+/* 각 조각마다 다른 시작 위치와 타이밍 (회전 없음) */
 .logo-piece:nth-child(1) {
   animation-delay: 0s;
-  transform: translate(-200px, -150px) rotate(45deg);
+  transform: translate(-200px, -150px);
 }
 .logo-piece:nth-child(2) {
   animation-delay: 0.05s;
-  transform: translate(-180px, 100px) rotate(-30deg);
+  transform: translate(-180px, 100px);
 }
 .logo-piece:nth-child(3) {
   animation-delay: 0.1s;
-  transform: translate(220px, 120px) rotate(60deg);
+  transform: translate(220px, 120px);
 }
 .logo-piece:nth-child(4) {
   animation-delay: 0.15s;
-  transform: translate(-150px, -80px) rotate(-45deg);
+  transform: translate(-150px, -80px);
 }
 .logo-piece:nth-child(5) {
   animation-delay: 0.2s;
-  transform: translate(150px, -120px) rotate(90deg);
+  transform: translate(150px, -120px);
 }
 .logo-piece:nth-child(6) {
   animation-delay: 0.25s;
-  transform: translate(-100px, 150px) rotate(-60deg);
+  transform: translate(-100px, 150px);
 }
 .logo-piece:nth-child(7) {
   animation-delay: 0.3s;
-  transform: translate(180px, -100px) rotate(30deg);
+  transform: translate(180px, -100px);
 }
 .logo-piece:nth-child(8) {
   animation-delay: 0.35s;
-  transform: translate(-220px, 80px) rotate(-90deg);
+  transform: translate(-220px, 80px);
 }
 .logo-piece:nth-child(9) {
   animation-delay: 0.4s;
-  transform: translate(200px, 140px) rotate(45deg);
+  transform: translate(200px, 140px);
 }
 .logo-piece:nth-child(10) {
   animation-delay: 0.45s;
-  transform: translate(-160px, -120px) rotate(-30deg);
+  transform: translate(-160px, -120px);
 }
 .logo-piece:nth-child(11) {
   animation-delay: 0.5s;
-  transform: translate(140px, 90px) rotate(60deg);
+  transform: translate(140px, 90px);
 }
 .logo-piece:nth-child(12) {
   animation-delay: 0.55s;
-  transform: translate(190px, -90px) rotate(-45deg);
+  transform: translate(190px, -90px);
 }
 .logo-piece:nth-child(13) {
   animation-delay: 0.6s;
-  transform: translate(-140px, 110px) rotate(30deg);
+  transform: translate(-140px, 110px);
 }
 .logo-piece:nth-child(14) {
   animation-delay: 0.65s;
-  transform: translate(210px, -60px) rotate(-60deg);
+  transform: translate(210px, -60px);
 }
 
 @keyframes pieceGather {
@@ -704,7 +767,7 @@ body:has(.shop-page) .menu-overlay {
     opacity: 1;
   }
   100% {
-    transform: translate(0, 0) rotate(0deg);
+    transform: translate(0, 0);
     opacity: 1;
   }
 }
