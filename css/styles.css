@@ -641,71 +641,58 @@ body:has(.shop-page) .menu-overlay {
 /* 각 조각마다 다른 시작 위치와 타이밍 */
 .logo-piece:nth-child(1) {
   animation-delay: 0s;
-  transform: translate(-200px, -150px) rotate(45deg);
 }
 .logo-piece:nth-child(2) {
   animation-delay: 0.05s;
-  transform: translate(-180px, 100px) rotate(-30deg);
 }
 .logo-piece:nth-child(3) {
   animation-delay: 0.1s;
-  transform: translate(220px, 120px) rotate(60deg);
 }
 .logo-piece:nth-child(4) {
   animation-delay: 0.15s;
-  transform: translate(-150px, -80px) rotate(-45deg);
 }
 .logo-piece:nth-child(5) {
   animation-delay: 0.2s;
-  transform: translate(150px, -120px) rotate(90deg);
 }
 .logo-piece:nth-child(6) {
   animation-delay: 0.25s;
-  transform: translate(-100px, 150px) rotate(-60deg);
 }
 .logo-piece:nth-child(7) {
   animation-delay: 0.3s;
-  transform: translate(180px, -100px) rotate(30deg);
 }
 .logo-piece:nth-child(8) {
   animation-delay: 0.35s;
-  transform: translate(-220px, 80px) rotate(-90deg);
 }
 .logo-piece:nth-child(9) {
   animation-delay: 0.4s;
-  transform: translate(200px, 140px) rotate(45deg);
 }
 .logo-piece:nth-child(10) {
   animation-delay: 0.45s;
-  transform: translate(-160px, -120px) rotate(-30deg);
 }
 .logo-piece:nth-child(11) {
   animation-delay: 0.5s;
-  transform: translate(140px, 90px) rotate(60deg);
 }
 .logo-piece:nth-child(12) {
   animation-delay: 0.55s;
-  transform: translate(190px, -90px) rotate(-45deg);
 }
 .logo-piece:nth-child(13) {
   animation-delay: 0.6s;
-  transform: translate(-140px, 110px) rotate(30deg);
 }
 .logo-piece:nth-child(14) {
   animation-delay: 0.65s;
-  transform: translate(210px, -60px) rotate(-60deg);
 }
 
 @keyframes pieceGather {
   0% {
     opacity: 0;
+    transform: scale(0.3) rotate(180deg);
   }
-  20% {
-    opacity: 1;
+  50% {
+    opacity: 0.5;
   }
   100% {
-    transform: translate(0, 0) rotate(0deg);
     opacity: 1;
+    transform: scale(1) rotate(0deg);
   }
 }
 
