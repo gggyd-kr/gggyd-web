@@ -132,7 +132,7 @@
 
     <header>
       <div class="logo">
-        <a href="index.html">gggyd</a>
+        <a href="index.html"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 578.27 164.41" fill="currentColor" class="logo-svg" aria-label="gggyd"><rect width="70.87" height="70.87"/><rect y="93.54" width="96.38" height="70.87"/><rect x="476.22" y="93.54" width="102.05" height="70.87"/><rect x="80.79" width="15.59" height="99.21"/><rect x="124.72" width="51.02" height="70.87"/><rect x="124.72" y="93.54" width="96.38" height="70.87"/><rect x="185.67" width="35.43" height="99.21"/><rect x="249.45" width="31.18" height="70.87"/><rect x="249.45" y="93.54" width="96.38" height="70.87"/><rect x="290.55" width="55.28" height="99.21"/><rect x="374.17" width="63.78" height="95.99"/><rect x="447.87" width="22.68" height="70.8"/><rect x="374.17" y="70.87" width="73.7" height="93.54"/><rect x="507.4" width="70.87" height="164.41"/></svg></a>
       </div>
       <nav>
         <a href="about.html">About</a>
@@ -167,7 +167,7 @@
 
     <div class="gallery-container">
       <!-- Project 1 -->
-      <a href="project-detail.html?id=1" class="gallery-item">
+      <a href="project-detail-new.html?id=jogakbo-tray" class="gallery-item">
         <img
           src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&h=1200&fit=crop"
           alt="조각보 트레이"
@@ -175,7 +175,7 @@
       </a>
 
       <!-- Project 2 -->
-      <a href="project-detail.html?id=2" class="gallery-item">
+      <a href="project-detail-new.html?id=popup-booth" class="gallery-item">
         <img
           src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1400&h=900&fit=crop"
           alt="백화점 팝업부스"
@@ -183,7 +183,7 @@
       </a>
 
       <!-- Project 3 -->
-      <a href="project-detail.html?id=3" class="gallery-item">
+      <a href="project-detail-new.html?id=wood-object" class="gallery-item">
         <img
           src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=700&h=1200&fit=crop"
           alt="우드 오브제"
@@ -191,7 +191,7 @@
       </a>
 
       <!-- Project 4 -->
-      <a href="project-detail.html?id=4" class="gallery-item">
+      <a href="project-detail-new.html?id=jogakbo-tray" class="gallery-item">
         <img
           src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=1200&h=900&fit=crop"
           alt="목공 가구"
@@ -199,7 +199,7 @@
       </a>
 
       <!-- Project 5 -->
-      <a href="project-detail.html?id=5" class="gallery-item">
+      <a href="project-detail-new.html?id=wood-object" class="gallery-item">
         <img
           src="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=800&h=1200&fit=crop"
           alt="전통 공예"
@@ -207,7 +207,7 @@
       </a>
 
       <!-- Project 6 -->
-      <a href="project-detail.html?id=6" class="gallery-item">
+      <a href="project-detail-new.html?id=jogakbo-tray" class="gallery-item">
         <img
           src="https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?w=1300&h=900&fit=crop"
           alt="우드 가구"
@@ -215,7 +215,7 @@
       </a>
 
       <!-- Project 7 -->
-      <a href="project-detail.html?id=7" class="gallery-item">
+      <a href="project-detail-new.html?id=wood-object" class="gallery-item">
         <img
           src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=750&h=1200&fit=crop"
           alt="목공 디테일"
@@ -223,7 +223,7 @@
       </a>
 
       <!-- Project 8 -->
-      <a href="project-detail.html?id=8" class="gallery-item">
+      <a href="project-detail-new.html?id=popup-booth" class="gallery-item">
         <img
           src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=1400&h=900&fit=crop"
           alt="공간 작업"
@@ -248,6 +248,37 @@
           overlay.style.display = "none";
         }, 500);
       }
+
+      // 로고 조각 모임 애니메이션 (JS transition — 회전 없음, 크로스브라우저 호환)
+      (function () {
+        const offsets = [
+          [-200, -150], [-180, 100],  [220, 120],  [-150, -80],
+          [150, -120],  [-100, 150],  [180, -100], [-220, 80],
+          [200, 140],   [-160, -120], [140, 90],   [190, -90],
+          [-140, 110],  [210, -60],
+        ];
+        const pieces = document.querySelectorAll(".logo-piece");
+        // 초기 위치 세팅 (transition 없이)
+        pieces.forEach(function (piece, i) {
+          piece.style.transform = "translate(" + offsets[i][0] + "px, " + offsets[i][1] + "px)";
+          piece.style.opacity = "0";
+          piece.style.transition = "none";
+        });
+        // 한 프레임 후 transition 시작
+        requestAnimationFrame(function () {
+          requestAnimationFrame(function () {
+            pieces.forEach(function (piece, i) {
+              var delay = i * 50;
+              setTimeout(function () {
+                piece.style.transition =
+                  "transform 1.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.25s ease";
+                piece.style.transform = "translate(0, 0)";
+                piece.style.opacity = "1";
+              }, delay);
+            });
+          });
+        });
+      })();
     </script>
   </body>
 </html>

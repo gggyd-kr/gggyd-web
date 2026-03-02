@@ -2,7 +2,7 @@
 .shop-page {
     min-height: 100vh;
     padding-top: 120px;
-    background-color: #f6f8ed;
+    background-color: #ffffff;
     overflow-y: auto;
 }
 
@@ -12,16 +12,16 @@ body:has(.shop-page)::-webkit-scrollbar {
 }
 
 body:has(.shop-page)::-webkit-scrollbar-track {
-    background: rgba(13, 13, 13, 0.1);
+    background: #ffffff;
 }
 
 body:has(.shop-page)::-webkit-scrollbar-thumb {
-    background: #0d0d0d;
+    background: var(--brand-yellow);
     border-radius: 4px;
 }
 
 body:has(.shop-page)::-webkit-scrollbar-thumb:hover {
-    background: #0d0d0d;
+    background: var(--brand-yellow);
 }
 
 /* Products Grid */
@@ -53,7 +53,7 @@ body:has(.shop-page)::-webkit-scrollbar-thumb:hover {
     bottom: 0;
     left: 0;
     padding: 1.5rem;
-    background: rgba(246, 248, 237, 0.9);
+    background: rgba(255, 255, 255, 0.9);
     display: flex !important;
     flex-direction: column;
     gap: 0.3rem;
@@ -80,7 +80,7 @@ body:has(.shop-page)::-webkit-scrollbar-thumb:hover {
     overflow: hidden;
     background-color: var(--light-gray);
     margin-bottom: 0;
-    border: 1px solid #0d0d0d;
+    border: 1px solid var(--brand-yellow);
 }
 
 .product-images img {
