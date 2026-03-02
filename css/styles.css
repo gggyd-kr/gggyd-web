@@ -697,39 +697,7 @@ body:has(.shop-page) .menu-overlay {
 
 .logo-piece {
   fill: #0d0d0d;
-  transform-origin: center;
-  animation: pieceGather 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-}
-
-/* 각 조각마다 다른 시작 위치와 타이밍 (회전 없음, CSS 변수로 명시) */
-.logo-piece:nth-child(1)  { animation-delay: 0s;    --dx: -200px; --dy: -150px; }
-.logo-piece:nth-child(2)  { animation-delay: 0.05s; --dx: -180px; --dy: 100px;  }
-.logo-piece:nth-child(3)  { animation-delay: 0.1s;  --dx: 220px;  --dy: 120px;  }
-.logo-piece:nth-child(4)  { animation-delay: 0.15s; --dx: -150px; --dy: -80px;  }
-.logo-piece:nth-child(5)  { animation-delay: 0.2s;  --dx: 150px;  --dy: -120px; }
-.logo-piece:nth-child(6)  { animation-delay: 0.25s; --dx: -100px; --dy: 150px;  }
-.logo-piece:nth-child(7)  { animation-delay: 0.3s;  --dx: 180px;  --dy: -100px; }
-.logo-piece:nth-child(8)  { animation-delay: 0.35s; --dx: -220px; --dy: 80px;   }
-.logo-piece:nth-child(9)  { animation-delay: 0.4s;  --dx: 200px;  --dy: 140px;  }
-.logo-piece:nth-child(10) { animation-delay: 0.45s; --dx: -160px; --dy: -120px; }
-.logo-piece:nth-child(11) { animation-delay: 0.5s;  --dx: 140px;  --dy: 90px;   }
-.logo-piece:nth-child(12) { animation-delay: 0.55s; --dx: 190px;  --dy: -90px;  }
-.logo-piece:nth-child(13) { animation-delay: 0.6s;  --dx: -140px; --dy: 110px;  }
-.logo-piece:nth-child(14) { animation-delay: 0.65s; --dx: 210px;  --dy: -60px;  }
-
-@keyframes pieceGather {
-  0% {
-    opacity: 0;
-    transform: translate(var(--dx), var(--dy));
-  }
-  20% {
-    opacity: 1;
-    transform: translate(var(--dx), var(--dy));
-  }
-  100% {
-    transform: translate(0, 0);
-    opacity: 1;
-  }
+  opacity: 0;
 }
 
 .landing-overlay .enter-button {
