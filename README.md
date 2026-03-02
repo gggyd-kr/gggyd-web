@@ -8,14 +8,12 @@ sensory-craft/
 ├── work.html                       # Work 페이지 (프로젝트 그리드)
 ├── shop.html                       # Shop 페이지 (제품 그리드)
 ├── project-detail-new.html         # 프로젝트 상세 페이지
-├── project-detail.html             # 구 프로젝트 상세 페이지
 │
 ├── css/                            # 스타일시트
 │   ├── styles.css                  # 공통 스타일 (헤더, 언어전환 등)
 │   ├── work.css                    # Work 페이지 스타일
 │   ├── shop.css                    # Shop 페이지 스타일
-│   ├── project-detail-new.css      # 프로젝트 상세 스타일
-│   └── project-detail.css          # 구 프로젝트 상세 스타일
+│   └── project-detail-new.css      # 프로젝트 상세 스타일
 │
 ├── js/                             # JavaScript
 │   ├── script.js                   # 공통 스크립트
