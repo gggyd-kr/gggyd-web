@@ -74,7 +74,7 @@ body:has(.contact-page) header,
 body:has(.project-detail-new) header,
 body:has(.product-detail) header {
   background-color: #ffffff;
-  border-bottom: 1px solid var(--brand-yellow);
+  border-bottom: 3px solid var(--brand-yellow);
   mix-blend-mode: normal;
 }
 
