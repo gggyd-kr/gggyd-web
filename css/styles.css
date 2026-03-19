@@ -60,14 +60,13 @@ body.index-page {
 /* 헤더가 3D 씬 위에 뜨도록 */
 body.index-page header {
   z-index: 100;
-  background-color: transparent;
-  border-bottom: none;
-  mix-blend-mode: multiply;
+  background-color: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid #0d0d0d;
+  backdrop-filter: blur(4px);
 }
 
 body.index-page .top-language-switcher {
   z-index: 100;
-  mix-blend-mode: multiply;
 }
 
 body.index-page .landing-overlay {
