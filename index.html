@@ -197,7 +197,7 @@
       renderer.toneMappingExposure = 1.0;
 
       const scene = new THREE.Scene();
-      scene.background = new THREE.Color(0xffd01c);
+      scene.background = new THREE.Color(0xffffff);
 
       const pmremGenerator = new THREE.PMREMGenerator(renderer);
       scene.environment = pmremGenerator.fromScene(new RoomEnvironment(), 0.04).texture;
@@ -215,10 +215,12 @@
       scene.add(fillLight);
       scene.add(new THREE.AmbientLight(0xffffff, 0.4));
 
+      const FLOOR_Y = -1.8; // 모든 모델의 바닥 기준 Y값
+
       const modelDefs = [
-        { path: 'models/towelpalace.glb', x: -6.5, yOffset: -0.4, initY:  0.3,          rotSpeed: 0.004 },
-        { path: 'models/pingpong.glb',    x:  0.2, yOffset:  0.0, initY:  0, rotSpeed: 0.005 },
-        { path: 'models/oriontable.glb',  x:  6.2, yOffset:  0.0, initY: -0.4,          rotSpeed: 0.003 },
+        { path: 'models/towelpalace.glb', x: -6.5, initY:  0.3,  rotSpeed: 0.004 },
+        { path: 'models/pingpong.glb',    x:  0.2, initY:  0,    rotSpeed: 0.005 },
+        { path: 'models/oriontable.glb',  x:  6.2, initY: -0.4,  rotSpeed: 0.003 },
       ];
 
       const objects = [];
@@ -250,11 +252,11 @@
             if (projectedW > MAX_WIDTH) scale = MAX_WIDTH / Math.max(size.x, size.z);
             obj.scale.setScalar(scale);
 
-            // 최종 중앙 정렬
+            // 바닥 기준 정렬: 모든 모델의 바닥을 FLOOR_Y에 맞춤
             const box2 = new THREE.Box3().setFromObject(obj);
             const center2 = box2.getCenter(new THREE.Vector3());
             obj.position.x = def.x - center2.x;
-            obj.position.y = -center2.y + (def.yOffset || 0);
+            obj.position.y = FLOOR_Y - box2.min.y; // 바닥을 FLOOR_Y에 고정
             obj.position.z = -center2.z;
 
             obj.rotation.y = def.initY || 0;
