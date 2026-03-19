@@ -36,17 +36,53 @@ body:has(.product-detail) {
   background-color: #ffffff;
 }
 
-/* Index 페이지에서만 overflow hidden */
-body:has(.gallery-container) {
+/* Index 페이지 */
+body.index-page {
   overflow: hidden;
   height: 100vh;
 }
 
-/* 모바일에서는 스크롤 가능하게 */
+#hero-3d {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+#hero-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* 헤더가 3D 씬 위에 뜨도록 */
+body.index-page header {
+  z-index: 100;
+  background-color: transparent;
+  border-bottom: none;
+  mix-blend-mode: multiply;
+}
+
+body.index-page .top-language-switcher {
+  z-index: 100;
+  mix-blend-mode: multiply;
+}
+
+body.index-page .landing-overlay {
+  z-index: 200;
+}
+
+/* 모바일 */
 @media (max-width: 910px) {
-  body:has(.gallery-container) {
+  body.index-page {
     overflow: auto;
     height: auto;
+  }
+  #hero-3d {
+    position: relative;
+    height: 100vh;
   }
 }
 
