@@ -68,8 +68,16 @@
       })(document);
     </script>
     <link rel="stylesheet" href="css/styles.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+          "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+      }
+    </script>
   </head>
-  <body>
+  <body class="index-page">
     <!-- Landing Overlay -->
     <div id="landingOverlay" class="landing-overlay">
       <div class="logo-container">
@@ -165,79 +173,121 @@
       </div>
     </div>
 
-    <div class="gallery-container">
-      <!-- Project 1 -->
-      <a href="project-detail-new.html?id=jogakbo-tray" class="gallery-item">
-        <img
-          src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&h=1200&fit=crop"
-          alt="조각보 트레이"
-        />
-      </a>
-
-      <!-- Project 2 -->
-      <a href="project-detail-new.html?id=popup-booth" class="gallery-item">
-        <img
-          src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=1400&h=900&fit=crop"
-          alt="백화점 팝업부스"
-        />
-      </a>
-
-      <!-- Project 3 -->
-      <a href="project-detail-new.html?id=wood-object" class="gallery-item">
-        <img
-          src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=700&h=1200&fit=crop"
-          alt="우드 오브제"
-        />
-      </a>
-
-      <!-- Project 4 -->
-      <a href="project-detail-new.html?id=jogakbo-tray" class="gallery-item">
-        <img
-          src="https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=1200&h=900&fit=crop"
-          alt="목공 가구"
-        />
-      </a>
-
-      <!-- Project 5 -->
-      <a href="project-detail-new.html?id=wood-object" class="gallery-item">
-        <img
-          src="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=800&h=1200&fit=crop"
-          alt="전통 공예"
-        />
-      </a>
-
-      <!-- Project 6 -->
-      <a href="project-detail-new.html?id=jogakbo-tray" class="gallery-item">
-        <img
-          src="https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?w=1300&h=900&fit=crop"
-          alt="우드 가구"
-        />
-      </a>
-
-      <!-- Project 7 -->
-      <a href="project-detail-new.html?id=wood-object" class="gallery-item">
-        <img
-          src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=750&h=1200&fit=crop"
-          alt="목공 디테일"
-        />
-      </a>
-
-      <!-- Project 8 -->
-      <a href="project-detail-new.html?id=popup-booth" class="gallery-item">
-        <img
-          src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=1400&h=900&fit=crop"
-          alt="공간 작업"
-        />
-      </a>
-    </div>
-
-    <div class="scroll-indicator">
-      <span>Scroll →</span>
+    <!-- 3D 히어로 씬 -->
+    <div id="hero-3d">
+      <canvas id="hero-canvas"></canvas>
     </div>
 
     <script src="js/script.js"></script>
     <script src="js/language-switcher.js"></script>
     <script src="js/menu-toggle.js"></script>
+
+    <script type="module">
+      import * as THREE from 'three';
+      import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+      import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
+
+      const container = document.getElementById('hero-3d');
+      const canvas = document.getElementById('hero-canvas');
+
+      const renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.0;
+
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0xffd01c);
+
+      const pmremGenerator = new THREE.PMREMGenerator(renderer);
+      scene.environment = pmremGenerator.fromScene(new RoomEnvironment(), 0.04).texture;
+
+      const camera = new THREE.PerspectiveCamera(42, container.clientWidth / container.clientHeight, 0.01, 200);
+      camera.position.set(0, 1.2, 16);
+      camera.lookAt(0, 0, 0);
+
+      // 조명
+      const dirLight = new THREE.DirectionalLight(0xffffff, 2.0);
+      dirLight.position.set(5, 8, 6);
+      scene.add(dirLight);
+      const fillLight = new THREE.DirectionalLight(0xfff0d0, 0.6);
+      fillLight.position.set(-6, 2, -4);
+      scene.add(fillLight);
+      scene.add(new THREE.AmbientLight(0xffffff, 0.4));
+
+      const modelDefs = [
+        { path: 'models/towelpalace.glb', x: -6.5, yOffset: -0.4, initY:  0.3,          rotSpeed: 0.004 },
+        { path: 'models/pingpong.glb',    x:  0.2, yOffset:  0.0, initY:  0, rotSpeed: 0.005 },
+        { path: 'models/oriontable.glb',  x:  6.2, yOffset:  0.0, initY: -0.4,          rotSpeed: 0.003 },
+      ];
+
+      const objects = [];
+      const loader = new GLTFLoader();
+      const TARGET_SIZE = 5.0; // 목표 크기 (최대 치수 기준)
+      const MAX_WIDTH = 5.5;   // 최대 폭 제한
+
+      function loadModel(def) {
+        return new Promise((resolve) => {
+          loader.load(def.path, (gltf) => {
+            const obj = gltf.scene;
+
+            // 정규화: 모델 중심을 (0,0,0)으로 이동 후 스케일
+            const box0 = new THREE.Box3().setFromObject(obj);
+            const center0 = box0.getCenter(new THREE.Vector3());
+
+            // 자식 메시들을 모두 중심으로 이동 (pivot 보정)
+            obj.traverse(child => {
+              if (child.isMesh) {
+                child.geometry.translate(-center0.x / (obj.scale.x || 1), -center0.y / (obj.scale.y || 1), -center0.z / (obj.scale.z || 1));
+              }
+            });
+
+            // 스케일 결정
+            const box1 = new THREE.Box3().setFromObject(obj);
+            const size = box1.getSize(new THREE.Vector3());
+            let scale = TARGET_SIZE / Math.max(size.x, size.y, size.z);
+            const projectedW = Math.max(size.x, size.z) * scale;
+            if (projectedW > MAX_WIDTH) scale = MAX_WIDTH / Math.max(size.x, size.z);
+            obj.scale.setScalar(scale);
+
+            // 최종 중앙 정렬
+            const box2 = new THREE.Box3().setFromObject(obj);
+            const center2 = box2.getCenter(new THREE.Vector3());
+            obj.position.x = def.x - center2.x;
+            obj.position.y = -center2.y + (def.yOffset || 0);
+            obj.position.z = -center2.z;
+
+            obj.rotation.y = def.initY || 0;
+            obj.rotation.x = def.flipX ? Math.PI : 0;
+            obj.userData.rotSpeed = def.rotSpeed;
+            obj.traverse(child => {
+              if (child.isMesh) {
+                child.castShadow = true;
+                child.receiveShadow = true;
+              }
+            });
+
+            scene.add(obj);
+            objects.push(obj);
+            resolve();
+          }, undefined, (err) => { console.error('GLB load error:', def.path, err); resolve(); });
+        });
+      }
+
+      Promise.all(modelDefs.map(loadModel));
+
+      window.addEventListener('resize', () => {
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+      });
+
+      (function animate() {
+        requestAnimationFrame(animate);
+        objects.forEach(obj => { obj.rotation.y += obj.userData.rotSpeed; });
+        renderer.render(scene, camera);
+      })();
+    </script>
 
     <script>
       // 랜딩 오버레이 숨기기
