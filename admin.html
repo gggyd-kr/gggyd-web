@@ -416,7 +416,7 @@ function renderForm(work) {
     <div class="form-actions">
       <button class="btn btn-primary" id="btnSave">${isNew ? '추가' : '저장'}</button>
       <button class="btn" id="btnCancel">취소</button>
-      ${editingId ? `<a href="project-detail-new.html?id=${editingId}" target="_blank" class="btn btn-ghost btn-sm" style="margin-left:auto">↗ 상세 미리보기</a>` : ''}
+      ${editingId ? `<a href="project-detail-new?id=${editingId}" target="_blank" class="btn btn-ghost btn-sm" style="margin-left:auto">↗ 상세 미리보기</a>` : ''}
     </div>
   `;
 
