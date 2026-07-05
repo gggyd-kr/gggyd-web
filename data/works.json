@@ -5,7 +5,9 @@
     "category": "designed-made",
     "year": "2026",
     "client": null,
-    "tags": ["Furniture"],
+    "tags": [
+      "Furniture"
+    ],
     "thumbnail": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=740&fit=crop"
   },
   {
@@ -14,7 +16,9 @@
     "category": "fabrication",
     "year": "2024",
     "client": "OO Architecture Studio",
-    "tags": ["Space"],
+    "tags": [
+      "Space"
+    ],
     "thumbnail": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600&h=740&fit=crop"
   },
   {
@@ -23,7 +27,9 @@
     "category": "designed-made",
     "year": "2023",
     "client": null,
-    "tags": ["Object"],
+    "tags": [
+      "Object"
+    ],
     "thumbnail": "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=600&h=740&fit=crop"
   },
   {
@@ -32,7 +38,9 @@
     "category": "designed-made",
     "year": "2022",
     "client": null,
-    "tags": ["Object"],
+    "tags": [
+      "Object"
+    ],
     "thumbnail": "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=600&h=740&fit=crop"
   }
 ]
