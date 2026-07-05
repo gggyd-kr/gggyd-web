@@ -14,7 +14,7 @@ function buildGrid(filter) {
   filtered.forEach(work => {
     const a = document.createElement("a");
     a.className = "work-card";
-    a.href = `project-detail-new.html?id=${work.id}`;
+    a.href = `project-detail-new?id=${work.id}`;
 
     const tagsStr = work.tags.join(", ");
     const clientLine = work.client
