@@ -6,7 +6,24 @@
     "year": "2026",
     "client": null,
     "tags": ["Furniture"],
-    "thumbnail": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=740&fit=crop"
+    "thumbnail": "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=740&fit=crop",
+    "detail": {
+      "description": [
+        "꽃의 형태에서 영감을 받은 사이드 테이블입니다. 유기적인 곡선과 단단한 구조의 대비를 통해 자연의 아름다움을 가구로 옮겼습니다.",
+        "감각공예단의 전통 목공 기법으로 제작되었으며, 각 제품은 수작업으로 완성되어 고유한 결을 지닙니다."
+      ],
+      "specs": [
+        { "label": "Material", "value": "White Oak" },
+        { "label": "Size", "value": "W 400 × D 400 × H 550 mm" },
+        { "label": "Finish", "value": "Natural Oil" },
+        { "label": "Technique", "value": "Traditional Joinery" }
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=1000&fit=crop",
+        "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=800&h=900&fit=crop",
+        "https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?w=800&h=1000&fit=crop"
+      ]
+    }
   },
   {
     "id": "popup-booth",
@@ -15,7 +32,24 @@
     "year": "2024",
     "client": "OO Architecture Studio",
     "tags": ["Space"],
-    "thumbnail": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600&h=740&fit=crop"
+    "thumbnail": "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600&h=740&fit=crop",
+    "detail": {
+      "description": [
+        "OO건축사무소의 디자인을 바탕으로 감각공예단이 제작을 담당한 백화점 팝업 부스입니다.",
+        "모듈형 구조로 설계되어 설치와 철거가 용이하며, 원목 소재를 사용해 공간에 따뜻함을 더했습니다."
+      ],
+      "specs": [
+        { "label": "Design", "value": "OO Architecture Studio" },
+        { "label": "Fabrication", "value": "감각공예단" },
+        { "label": "Material", "value": "Oak, Steel" },
+        { "label": "Size", "value": "3000 × 4000 × 2400 mm" }
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&h=700&fit=crop",
+        "https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=800&h=1200&fit=crop",
+        "https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=800&h=800&fit=crop"
+      ]
+    }
   },
   {
     "id": "wood-object",
@@ -24,7 +58,23 @@
     "year": "2023",
     "client": null,
     "tags": ["Object"],
-    "thumbnail": "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=600&h=740&fit=crop"
+    "thumbnail": "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=600&h=740&fit=crop",
+    "detail": {
+      "description": [
+        "목재의 고유한 결과 색상을 최대한 살린 오브제 컬렉션입니다. 기능과 조형 사이의 경계를 탐구합니다.",
+        "각 오브제는 독립적인 작품이면서도 함께 배치했을 때 조화를 이루도록 시리즈로 구성되었습니다."
+      ],
+      "specs": [
+        { "label": "Material", "value": "Walnut, Oak, Maple" },
+        { "label": "Finish", "value": "Beeswax Polish" },
+        { "label": "Technique", "value": "Hand Carving" }
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?w=800&h=1100&fit=crop",
+        "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&h=1000&fit=crop"
+      ]
+    }
   },
   {
     "id": "jogakbo-tray",
@@ -33,6 +83,25 @@
     "year": "2022",
     "client": null,
     "tags": ["Object"],
-    "thumbnail": "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=600&h=740&fit=crop"
+    "thumbnail": "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=600&h=740&fit=crop",
+    "detail": {
+      "description": [
+        "전통 조각보의 절약 정신과 짜맞춤 기법을 현대적으로 재해석한 목공예 트레이입니다. 가구 제작 과정에서 발생하는 자투리 목재를 활용하여, 각기 다른 나무의 결과 색상을 조화롭게 배치했습니다.",
+        "전통 제혀쪽매와 사개맞춤 기법으로 조립하여 접착제 사용을 최소화하였으며, 제품마다 고유한 무늬를 지닌 유일한 작품입니다."
+      ],
+      "specs": [
+        { "label": "Material", "value": "Oak, Walnut, Maple" },
+        { "label": "Size", "value": "W 350 × D 250 × H 30 mm" },
+        { "label": "Finish", "value": "Natural Oil" },
+        { "label": "Technique", "value": "Traditional Joinery" }
+      ],
+      "images": [
+        "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&h=1000&fit=crop",
+        "https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=800&h=1200&fit=crop",
+        "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=800&h=600&fit=crop",
+        "https://images.unsplash.com/photo-1538688525198-9b88f6f53126?w=800&h=900&fit=crop",
+        "https://images.unsplash.com/photo-1550581190-9c1c48d21d6c?w=800&h=1100&fit=crop"
+      ]
+    }
   }
 ]

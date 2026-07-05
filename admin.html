@@ -6,7 +6,6 @@
   <title>Work Editor — 감각공예단</title>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
       --bg: #f7f7f5;
       --surface: #ffffff;
@@ -20,378 +19,166 @@
       --radius: 6px;
       --font: 'DM Sans', -apple-system, sans-serif;
     }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); min-height: 100vh; }
 
-    body {
-      font-family: var(--font);
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    /* ── Top bar ── */
+    /* ── Topbar ── */
     .topbar {
-      background: var(--surface);
-      border-bottom: 1px solid var(--border);
-      padding: 0 32px;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      position: sticky;
-      top: 0;
-      z-index: 100;
+      background: var(--surface); border-bottom: 1px solid var(--border);
+      padding: 0 32px; height: 56px; display: flex; align-items: center;
+      justify-content: space-between; position: sticky; top: 0; z-index: 100;
     }
-
-    .topbar-left {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .topbar-logo {
-      font-size: 0.78rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--text);
-    }
-
+    .topbar-left { display: flex; align-items: center; gap: 16px; }
+    .topbar-logo { font-size: 0.78rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
     .topbar-sep { color: var(--border-dark); }
-
-    .topbar-title {
-      font-size: 0.85rem;
-      color: var(--text-muted);
-    }
-
+    .topbar-title { font-size: 0.85rem; color: var(--text-muted); }
     .topbar-right { display: flex; gap: 10px; }
 
     /* ── Buttons ── */
     .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 7px 16px;
-      font-family: var(--font);
-      font-size: 0.82rem;
-      font-weight: 500;
-      border-radius: var(--radius);
-      border: 1px solid var(--border-dark);
-      background: var(--surface);
-      color: var(--text);
-      cursor: pointer;
-      transition: background 0.15s, border-color 0.15s;
-      text-decoration: none;
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 7px 16px; font-family: var(--font); font-size: 0.82rem; font-weight: 500;
+      border-radius: var(--radius); border: 1px solid var(--border-dark);
+      background: var(--surface); color: var(--text); cursor: pointer;
+      transition: background 0.15s; text-decoration: none;
     }
-
     .btn:hover { background: #f0f0f0; }
-
-    .btn-primary {
-      background: var(--accent);
-      color: var(--accent-fg);
-      border-color: var(--accent);
-    }
-
+    .btn-primary { background: var(--accent); color: var(--accent-fg); border-color: var(--accent); }
     .btn-primary:hover { background: #333; border-color: #333; }
-
-    .btn-danger {
-      background: none;
-      color: var(--danger);
-      border-color: #e8b0ab;
-    }
-
+    .btn-danger { background: none; color: var(--danger); border-color: #e8b0ab; }
     .btn-danger:hover { background: #fdf0ef; }
-
     .btn-sm { padding: 5px 11px; font-size: 0.75rem; }
+    .btn-ghost { border-color: transparent; background: none; color: var(--text-muted); }
+    .btn-ghost:hover { background: var(--bg); color: var(--text); }
 
     /* ── Layout ── */
     .layout {
-      display: grid;
-      grid-template-columns: 1fr 380px;
-      gap: 24px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 28px 24px;
+      display: grid; grid-template-columns: 1fr 420px;
+      gap: 24px; max-width: 1280px; margin: 0 auto; padding: 28px 24px;
+      align-items: start;
     }
 
     /* ── Panel ── */
-    .panel {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-    }
-
+    .panel { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
     .panel-header {
-      padding: 16px 20px;
-      border-bottom: 1px solid var(--border);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      padding: 16px 20px; border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: space-between;
     }
-
-    .panel-header h2 {
-      font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-    }
-
-    .panel-count {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      background: var(--bg);
-      padding: 2px 8px;
-      border-radius: 20px;
-    }
+    .panel-header h2 { font-size: 0.85rem; font-weight: 600; letter-spacing: 0.02em; }
+    .panel-count { font-size: 0.75rem; color: var(--text-muted); background: var(--bg); padding: 2px 8px; border-radius: 20px; }
 
     /* ── Works list ── */
-    .works-list { padding: 8px 0; }
-
+    .works-list { padding: 8px 0; min-height: 60px; }
     .work-row {
-      display: flex;
-      align-items: center;
-      gap: 14px;
-      padding: 12px 20px;
-      border-bottom: 1px solid var(--bg);
-      cursor: pointer;
-      transition: background 0.1s;
+      display: flex; align-items: center; gap: 14px;
+      padding: 12px 20px; border-bottom: 1px solid var(--bg);
+      cursor: pointer; transition: background 0.1s;
     }
-
     .work-row:last-child { border-bottom: none; }
     .work-row:hover { background: var(--bg); }
     .work-row.selected { background: #f0f0ee; }
-
     .work-row-thumb {
-      width: 44px;
-      height: 54px;
-      object-fit: cover;
-      border-radius: 3px;
-      background: var(--border);
-      flex-shrink: 0;
+      width: 44px; height: 54px; object-fit: cover;
+      border-radius: 3px; background: var(--border); flex-shrink: 0;
     }
-
-    .work-row-thumb.placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: var(--border-dark);
-      font-size: 18px;
-    }
-
     .work-row-info { flex: 1; min-width: 0; }
-
-    .work-row-title {
-      font-size: 0.85rem;
-      font-weight: 500;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin-bottom: 3px;
-    }
-
-    .work-row-meta {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-    }
-
+    .work-row-title { font-size: 0.85rem; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 3px; }
+    .work-row-meta { font-size: 0.72rem; color: var(--text-muted); }
     .category-badge {
-      display: inline-block;
-      font-size: 0.65rem;
-      padding: 2px 7px;
-      border-radius: 20px;
-      background: var(--bg);
-      border: 1px solid var(--border);
-      color: var(--text-muted);
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
+      display: inline-block; font-size: 0.65rem; padding: 2px 7px;
+      border-radius: 20px; background: var(--bg); border: 1px solid var(--border);
+      color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.04em;
     }
-
     .work-row-actions { display: flex; gap: 4px; opacity: 0; transition: opacity 0.15s; }
     .work-row:hover .work-row-actions { opacity: 1; }
 
-    /* ── Form ── */
+    /* ── Form tabs ── */
+    .form-tabs {
+      display: flex; border-bottom: 1px solid var(--border);
+    }
+    .form-tab {
+      flex: 1; padding: 12px 0; font-size: 0.8rem; font-weight: 500;
+      text-align: center; cursor: pointer; border: none; background: none;
+      color: var(--text-muted); border-bottom: 2px solid transparent;
+      margin-bottom: -1px; transition: color 0.15s, border-color 0.15s;
+    }
+    .form-tab.active { color: var(--text); border-bottom-color: var(--text); }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── Form fields ── */
     .form-body { padding: 20px; }
-
-    .form-title {
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 18px;
-    }
-
     .field { margin-bottom: 16px; }
-
-    .field label {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 500;
-      color: var(--text-muted);
-      margin-bottom: 5px;
-      letter-spacing: 0.02em;
+    .field label { display: block; font-size: 0.75rem; font-weight: 500; color: var(--text-muted); margin-bottom: 5px; letter-spacing: 0.02em; }
+    .field input, .field select, .field textarea {
+      width: 100%; padding: 8px 12px; font-family: var(--font); font-size: 0.85rem;
+      border: 1px solid var(--border-dark); border-radius: var(--radius);
+      background: var(--surface); color: var(--text); outline: none;
+      transition: border-color 0.15s; resize: vertical;
     }
-
-    .field input,
-    .field select,
-    .field textarea {
-      width: 100%;
-      padding: 8px 12px;
-      font-family: var(--font);
-      font-size: 0.85rem;
-      border: 1px solid var(--border-dark);
-      border-radius: var(--radius);
-      background: var(--surface);
-      color: var(--text);
-      outline: none;
-      transition: border-color 0.15s;
-    }
-
-    .field input:focus,
-    .field select:focus,
-    .field textarea:focus {
-      border-color: var(--accent);
-    }
-
+    .field input:focus, .field select:focus, .field textarea:focus { border-color: var(--text); }
     .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-
-    .thumb-preview {
-      width: 100%;
-      aspect-ratio: 4/5;
-      object-fit: cover;
-      border-radius: var(--radius);
-      background: var(--bg);
-      border: 1px solid var(--border);
-      margin-top: 8px;
-      display: none;
-    }
-
+    .thumb-preview { width: 100%; aspect-ratio: 4/5; object-fit: cover; border-radius: var(--radius); background: var(--bg); border: 1px solid var(--border); margin-top: 8px; display: none; }
     .thumb-preview.visible { display: block; }
 
-    .form-actions {
-      display: flex;
-      gap: 8px;
-      padding: 16px 20px;
-      border-top: 1px solid var(--border);
+    /* ── Dynamic list (specs, images, paragraphs) ── */
+    .dyn-list { display: flex; flex-direction: column; gap: 8px; margin-bottom: 10px; }
+    .dyn-item { display: flex; align-items: center; gap: 8px; }
+    .dyn-item input { flex: 1; }
+    .dyn-item .key-input { flex: 0 0 100px; }
+    .dyn-img-preview { width: 40px; height: 50px; object-fit: cover; border-radius: 3px; background: var(--bg); border: 1px solid var(--border); flex-shrink: 0; }
+    .dyn-drag { cursor: grab; color: var(--text-muted); font-size: 12px; padding: 0 2px; user-select: none; }
+    .add-row-btn {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-size: 0.78rem; color: var(--text-muted); background: none;
+      border: 1px dashed var(--border-dark); border-radius: var(--radius);
+      padding: 6px 12px; cursor: pointer; width: 100%;
+      justify-content: center; transition: color 0.15s, border-color 0.15s;
     }
+    .add-row-btn:hover { color: var(--text); border-color: var(--text); }
 
-    /* ── Export section ── */
+    .section-label { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--text-muted); margin-bottom: 10px; margin-top: 20px; }
+    .section-label:first-child { margin-top: 0; }
+
+    /* ── Form actions ── */
+    .form-actions { display: flex; gap: 8px; padding: 16px 20px; border-top: 1px solid var(--border); }
+
+    /* ── Export ── */
     .export-section {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 20px;
-      margin-top: 24px;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 20px; margin-top: 0;
       grid-column: 1 / -1;
     }
-
-    .export-section h3 {
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .export-section p {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-      margin-bottom: 14px;
-      line-height: 1.6;
-    }
-
-    .export-section .steps {
-      display: flex;
-      gap: 12px;
-      margin-bottom: 14px;
-      flex-wrap: wrap;
-    }
-
-    .step {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-size: 0.78rem;
-      color: var(--text-muted);
-    }
-
-    .step-num {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background: var(--accent);
-      color: var(--accent-fg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.65rem;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
+    .export-section h3 { font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; }
+    .export-section p { font-size: 0.8rem; color: var(--text-muted); margin-bottom: 14px; line-height: 1.6; }
+    .steps { display: flex; gap: 16px; margin-bottom: 14px; flex-wrap: wrap; }
+    .step { display: flex; align-items: flex-start; gap: 8px; font-size: 0.78rem; color: var(--text-muted); }
+    .step-num { width: 20px; height: 20px; border-radius: 50%; background: var(--accent); color: var(--accent-fg); display: flex; align-items: center; justify-content: center; font-size: 0.65rem; font-weight: 700; flex-shrink: 0; }
     .export-actions { display: flex; gap: 10px; align-items: center; }
-
-    .export-status {
-      font-size: 0.78rem;
-      color: #2ecc71;
-      display: none;
-    }
-
+    .export-status { font-size: 0.78rem; color: #2ecc71; display: none; }
     .export-status.visible { display: block; }
 
-    /* ── Empty state ── */
-    .empty {
-      padding: 40px 20px;
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.82rem;
-    }
+    /* ── Empty ── */
+    .empty { padding: 40px 20px; text-align: center; color: var(--text-muted); font-size: 0.82rem; line-height: 1.8; }
 
     /* ── Toast ── */
-    .toast {
-      position: fixed;
-      bottom: 24px;
-      right: 24px;
-      background: var(--accent);
-      color: var(--accent-fg);
-      padding: 10px 18px;
-      border-radius: var(--radius);
-      font-size: 0.82rem;
-      z-index: 999;
-      opacity: 0;
-      transform: translateY(8px);
-      transition: opacity 0.2s, transform 0.2s;
-      pointer-events: none;
-    }
-
+    .toast { position: fixed; bottom: 24px; right: 24px; background: var(--accent); color: var(--accent-fg); padding: 10px 18px; border-radius: var(--radius); font-size: 0.82rem; z-index: 999; opacity: 0; transform: translateY(8px); transition: opacity 0.2s, transform 0.2s; pointer-events: none; }
     .toast.show { opacity: 1; transform: translateY(0); }
 
-    /* ── Delete confirm ── */
-    .confirm-overlay {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.4);
-      z-index: 200;
-      display: none;
-      align-items: center;
-      justify-content: center;
-    }
-
+    /* ── Confirm ── */
+    .confirm-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.4); z-index: 200; display: none; align-items: center; justify-content: center; }
     .confirm-overlay.visible { display: flex; }
-
-    .confirm-box {
-      background: var(--surface);
-      border-radius: var(--radius);
-      padding: 28px;
-      max-width: 360px;
-      width: 90%;
-    }
-
+    .confirm-box { background: var(--surface); border-radius: var(--radius); padding: 28px; max-width: 360px; width: 90%; }
     .confirm-box h3 { font-size: 1rem; margin-bottom: 8px; }
     .confirm-box p { font-size: 0.82rem; color: var(--text-muted); margin-bottom: 20px; line-height: 1.5; }
     .confirm-box .btns { display: flex; gap: 10px; justify-content: flex-end; }
+
+    /* ── Preview link ── */
+    .preview-link { display: block; text-align: center; padding: 10px; font-size: 0.78rem; color: var(--text-muted); border-top: 1px solid var(--border); text-decoration: none; }
+    .preview-link:hover { color: var(--text); background: var(--bg); }
   </style>
 </head>
 <body>
 
-<!-- Topbar -->
 <div class="topbar">
   <div class="topbar-left">
     <span class="topbar-logo">감각공예단</span>
@@ -403,10 +190,9 @@
   </div>
 </div>
 
-<!-- Main layout -->
 <div class="layout">
 
-  <!-- Works List -->
+  <!-- ── Left: Works list ── -->
   <div>
     <div class="panel">
       <div class="panel-header">
@@ -420,7 +206,7 @@
     </div>
   </div>
 
-  <!-- Form Panel -->
+  <!-- ── Right: Form panel ── -->
   <div>
     <div class="panel" id="formPanel">
       <div class="panel-header">
@@ -432,23 +218,14 @@
     </div>
   </div>
 
-  <!-- Export -->
+  <!-- ── Export ── -->
   <div class="export-section">
     <h3>저장 & 배포</h3>
-    <p>에디터에서의 변경사항은 이 브라우저에 임시 저장됩니다. 실제 사이트에 반영하려면 아래 순서를 따라주세요.</p>
+    <p>에디터의 변경사항은 이 브라우저에 임시 저장됩니다. 실제 사이트에 반영하려면 아래 순서를 따르세요.</p>
     <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <span><strong>works.json 다운로드</strong> 버튼 클릭</span>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <span>다운로드된 파일을 <code>data/works.json</code>으로 교체</span>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <span>git commit & push → Vercel 자동 배포</span>
-      </div>
+      <div class="step"><div class="step-num">1</div><span><strong>works.json 다운로드</strong> 클릭</span></div>
+      <div class="step"><div class="step-num">2</div><span><code>data/works.json</code> 파일 교체</span></div>
+      <div class="step"><div class="step-num">3</div><span>git commit & push → Vercel 자동 배포</span></div>
     </div>
     <div class="export-actions">
       <button class="btn btn-primary" id="btnExport">↓ works.json 다운로드</button>
@@ -463,7 +240,7 @@
 <div class="confirm-overlay" id="confirmOverlay">
   <div class="confirm-box">
     <h3>정말 삭제할까요?</h3>
-    <p id="confirmMsg">이 작업을 삭제하면 되돌릴 수 없습니다.</p>
+    <p id="confirmMsg"></p>
     <div class="btns">
       <button class="btn" id="confirmCancel">취소</button>
       <button class="btn btn-danger" id="confirmOk">삭제</button>
@@ -486,31 +263,23 @@ const CATEGORIES = {
 let works = [];
 let editingId = null;
 let deleteTarget = null;
+let activeTab = "basic";
 
-// ── Storage ─────────────────────────────────
-function load() {
-  const stored = localStorage.getItem(STORAGE_KEY);
-  return stored ? JSON.parse(stored) : null;
+// ── Helpers ──────────────────────────────────
+function save() { localStorage.setItem(STORAGE_KEY, JSON.stringify(works)); }
+function load() { const s = localStorage.getItem(STORAGE_KEY); return s ? JSON.parse(s) : null; }
+function slugify(s) { return s.toLowerCase().replace(/[^a-z0-9가-힣\s-]/g,"").trim().replace(/\s+/g,"-"); }
+function toast(msg) {
+  const el = document.getElementById("toast");
+  el.textContent = msg; el.classList.add("show");
+  setTimeout(() => el.classList.remove("show"), 2000);
 }
 
-function save() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(works));
-}
-
-function slugify(str) {
-  return str.toLowerCase()
-    .replace(/[^a-z0-9가-힣\s-]/g, "")
-    .trim()
-    .replace(/\s+/g, "-");
-}
-
-// ── Render list ──────────────────────────────
+// ── List ─────────────────────────────────────
 function renderList() {
   const el = document.getElementById("worksList");
-  const count = document.getElementById("countBadge");
+  document.getElementById("countBadge").textContent = works.length;
   const sorted = [...works].sort((a, b) => b.year - a.year);
-
-  count.textContent = works.length;
 
   if (!works.length) {
     el.innerHTML = '<div class="empty">작업이 없습니다.<br>+ 새 작업 추가로 시작하세요.</div>';
@@ -520,8 +289,8 @@ function renderList() {
   el.innerHTML = sorted.map(w => `
     <div class="work-row ${editingId === w.id ? 'selected' : ''}" data-id="${w.id}">
       ${w.thumbnail
-        ? `<img class="work-row-thumb" src="${w.thumbnail}" alt="" onerror="this.style.display='none'">`
-        : `<div class="work-row-thumb placeholder">□</div>`}
+        ? `<img class="work-row-thumb" src="${w.thumbnail}" alt="" onerror="this.style.opacity=0">`
+        : `<div class="work-row-thumb" style="background:#e8e8e8;"></div>`}
       <div class="work-row-info">
         <div class="work-row-title">${w.title}</div>
         <div class="work-row-meta">
@@ -541,118 +310,210 @@ function renderList() {
       openEdit(e.currentTarget.dataset.id);
     });
   });
-
   el.querySelectorAll("[data-del]").forEach(btn => {
-    btn.addEventListener("click", e => {
-      e.stopPropagation();
-      confirmDelete(e.currentTarget.dataset.del);
-    });
+    btn.addEventListener("click", e => { e.stopPropagation(); confirmDelete(e.currentTarget.dataset.del); });
   });
 }
 
 // ── Form ─────────────────────────────────────
-function openNew() {
-  editingId = null;
-  renderForm(null);
-  renderList();
-}
-
-function openEdit(id) {
-  editingId = id;
-  renderForm(works.find(w => w.id === id));
-  renderList();
-}
+function openNew() { editingId = null; activeTab = "basic"; renderForm(null); renderList(); }
+function openEdit(id) { editingId = id; renderForm(works.find(w => w.id === id)); renderList(); }
 
 function renderForm(work) {
   const isNew = !work;
-  document.getElementById("formPanelTitle").textContent = isNew ? "새 작업 추가" : "작업 수정";
+  document.getElementById("formPanelTitle").textContent = isNew ? "새 작업 추가" : work.title;
 
-  const tagsVal = work ? work.tags.join(", ") : "";
-  const clientVal = work?.client || "";
-  const thumbVal  = work?.thumbnail || "";
+  const d = work?.detail || {};
+  const descriptions = d.description || [""];
+  const specs = d.specs || [{ label: "", value: "" }];
+  const images = d.images || [""];
 
   document.getElementById("formBody").innerHTML = `
-    <div class="form-body">
-      <div class="field">
-        <label>제목 *</label>
-        <input id="fTitle" type="text" value="${work?.title || ''}" placeholder="Flower Side Table">
-      </div>
-      <div class="field-row">
+    <div class="form-tabs">
+      <button class="form-tab ${activeTab==='basic'?'active':''}" data-tab="basic">기본 정보</button>
+      <button class="form-tab ${activeTab==='detail'?'active':''}" data-tab="detail">상세 내용</button>
+    </div>
+
+    <!-- Tab: Basic -->
+    <div class="tab-panel ${activeTab==='basic'?'active':''}" id="tab-basic">
+      <div class="form-body">
         <div class="field">
-          <label>카테고리 *</label>
-          <select id="fCategory">
-            <option value="designed-made" ${work?.category==='designed-made'?'selected':''}>Designed & Made by Us</option>
-            <option value="designed"      ${work?.category==='designed'?'selected':''}>Designed by Us</option>
-            <option value="fabrication"   ${work?.category==='fabrication'?'selected':''}>Fabrication Partner</option>
-          </select>
+          <label>제목 *</label>
+          <input id="fTitle" type="text" value="${work?.title||''}" placeholder="Flower Side Table">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>카테고리 *</label>
+            <select id="fCategory">
+              <option value="designed-made" ${work?.category==='designed-made'?'selected':''}>Designed & Made by Us</option>
+              <option value="designed"      ${work?.category==='designed'?'selected':''}>Designed by Us</option>
+              <option value="fabrication"   ${work?.category==='fabrication'?'selected':''}>Fabrication Partner</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>연도 *</label>
+            <input id="fYear" type="number" value="${work?.year||new Date().getFullYear()}" min="2000" max="2099">
+          </div>
         </div>
         <div class="field">
-          <label>연도 *</label>
-          <input id="fYear" type="number" value="${work?.year || new Date().getFullYear()}" min="2000" max="2099">
+          <label>클라이언트 (없으면 비워두기)</label>
+          <input id="fClient" type="text" value="${work?.client||''}" placeholder="OO Architecture Studio">
         </div>
-      </div>
-      <div class="field">
-        <label>클라이언트 (없으면 비워두기)</label>
-        <input id="fClient" type="text" value="${clientVal}" placeholder="OO Architecture Studio">
-      </div>
-      <div class="field">
-        <label>태그 (쉼표로 구분)</label>
-        <input id="fTags" type="text" value="${tagsVal}" placeholder="Furniture, Object">
-      </div>
-      <div class="field">
-        <label>썸네일 이미지 URL</label>
-        <input id="fThumb" type="text" value="${thumbVal}" placeholder="https://...">
-        <img class="thumb-preview ${thumbVal ? 'visible' : ''}" id="thumbPreview" src="${thumbVal}">
+        <div class="field">
+          <label>태그 (쉼표로 구분)</label>
+          <input id="fTags" type="text" value="${(work?.tags||[]).join(', ')}" placeholder="Furniture, Object">
+        </div>
+        <div class="field">
+          <label>썸네일 이미지 URL</label>
+          <input id="fThumb" type="text" value="${work?.thumbnail||''}" placeholder="https://...">
+          <img class="thumb-preview ${work?.thumbnail?'visible':''}" id="thumbPreview" src="${work?.thumbnail||''}">
+        </div>
       </div>
     </div>
+
+    <!-- Tab: Detail -->
+    <div class="tab-panel ${activeTab==='detail'?'active':''}" id="tab-detail">
+      <div class="form-body">
+
+        <div class="section-label">설명 (단락별로 추가)</div>
+        <div class="dyn-list" id="descList">
+          ${descriptions.map((p,i) => `
+            <div class="dyn-item">
+              <textarea rows="3" class="desc-input" placeholder="설명 단락 ${i+1}">${p}</textarea>
+              <button class="btn btn-ghost btn-sm dyn-remove" title="삭제">✕</button>
+            </div>
+          `).join("")}
+        </div>
+        <button class="add-row-btn" id="addDesc">+ 단락 추가</button>
+
+        <div class="section-label">스펙 (라벨 · 내용)</div>
+        <div class="dyn-list" id="specList">
+          ${specs.map(s => `
+            <div class="dyn-item">
+              <input class="key-input spec-label" type="text" value="${s.label||''}" placeholder="Label">
+              <input class="spec-value" type="text" value="${s.value||''}" placeholder="Value">
+              <button class="btn btn-ghost btn-sm dyn-remove" title="삭제">✕</button>
+            </div>
+          `).join("")}
+        </div>
+        <button class="add-row-btn" id="addSpec">+ 스펙 추가</button>
+
+        <div class="section-label">갤러리 이미지 (URL)</div>
+        <div class="dyn-list" id="imgList">
+          ${images.map(url => `
+            <div class="dyn-item">
+              <img class="dyn-img-preview" src="${url}" onerror="this.style.opacity=0">
+              <input class="img-url" type="text" value="${url}" placeholder="https://...">
+              <button class="btn btn-ghost btn-sm dyn-remove" title="삭제">✕</button>
+            </div>
+          `).join("")}
+        </div>
+        <button class="add-row-btn" id="addImg">+ 이미지 추가</button>
+
+      </div>
+    </div>
+
     <div class="form-actions">
       <button class="btn btn-primary" id="btnSave">${isNew ? '추가' : '저장'}</button>
       <button class="btn" id="btnCancel">취소</button>
+      ${editingId ? `<a href="project-detail-new.html?id=${editingId}" target="_blank" class="btn btn-ghost btn-sm" style="margin-left:auto">↗ 상세 미리보기</a>` : ''}
     </div>
   `;
 
-  // live thumbnail preview
-  document.getElementById("fThumb").addEventListener("input", e => {
-    const preview = document.getElementById("thumbPreview");
-    const val = e.target.value.trim();
-    if (val) {
-      preview.src = val;
-      preview.classList.add("visible");
-    } else {
-      preview.classList.remove("visible");
+  // Tab switching
+  document.querySelectorAll(".form-tab").forEach(tab => {
+    tab.addEventListener("click", () => {
+      activeTab = tab.dataset.tab;
+      document.querySelectorAll(".form-tab").forEach(t => t.classList.toggle("active", t.dataset.tab === activeTab));
+      document.querySelectorAll(".tab-panel").forEach(p => p.classList.toggle("active", p.id === "tab-" + activeTab));
+    });
+  });
+
+  // Thumbnail preview
+  document.getElementById("fThumb")?.addEventListener("input", e => {
+    const p = document.getElementById("thumbPreview");
+    if (e.target.value.trim()) { p.src = e.target.value.trim(); p.classList.add("visible"); }
+    else p.classList.remove("visible");
+  });
+
+  // Image URL live preview
+  document.getElementById("imgList")?.addEventListener("input", e => {
+    if (e.target.classList.contains("img-url")) {
+      const preview = e.target.closest(".dyn-item").querySelector(".dyn-img-preview");
+      preview.src = e.target.value.trim();
+      preview.style.opacity = "";
+    }
+  });
+
+  // Add/remove dynamics
+  function addDynRow(listId, html) {
+    const list = document.getElementById(listId);
+    const div = document.createElement("div");
+    div.className = "dyn-item";
+    div.innerHTML = html;
+    list.appendChild(div);
+    div.querySelector("input,textarea")?.focus();
+  }
+
+  document.getElementById("addDesc")?.addEventListener("click", () => {
+    addDynRow("descList", `<textarea rows="3" class="desc-input" placeholder="설명 단락"></textarea><button class="btn btn-ghost btn-sm dyn-remove" title="삭제">✕</button>`);
+  });
+  document.getElementById("addSpec")?.addEventListener("click", () => {
+    addDynRow("specList", `<input class="key-input spec-label" type="text" placeholder="Label"><input class="spec-value" type="text" placeholder="Value"><button class="btn btn-ghost btn-sm dyn-remove" title="삭제">✕</button>`);
+  });
+  document.getElementById("addImg")?.addEventListener("click", () => {
+    addDynRow("imgList", `<img class="dyn-img-preview" src=""><input class="img-url" type="text" placeholder="https://..."><button class="btn btn-ghost btn-sm dyn-remove" title="삭제">✕</button>`);
+  });
+
+  // Remove rows
+  document.getElementById("formBody").addEventListener("click", e => {
+    if (e.target.classList.contains("dyn-remove")) {
+      e.target.closest(".dyn-item").remove();
     }
   });
 
   document.getElementById("btnSave").addEventListener("click", saveForm);
-  document.getElementById("btnCancel").addEventListener("click", () => {
-    editingId = null;
-    document.getElementById("formPanelTitle").textContent = "항목 선택";
-    document.getElementById("formBody").innerHTML = '<div class="empty">← 왼쪽에서 항목을 선택하거나<br>새 작업을 추가하세요</div>';
-    renderList();
-  });
+  document.getElementById("btnCancel").addEventListener("click", resetForm);
+}
+
+function resetForm() {
+  editingId = null;
+  document.getElementById("formPanelTitle").textContent = "항목 선택";
+  document.getElementById("formBody").innerHTML = '<div class="empty">← 왼쪽에서 항목을 선택하거나<br>새 작업을 추가하세요</div>';
+  renderList();
 }
 
 function saveForm() {
-  const title  = document.getElementById("fTitle").value.trim();
-  const cat    = document.getElementById("fCategory").value;
-  const year   = document.getElementById("fYear").value.trim();
-  const client = document.getElementById("fClient").value.trim();
-  const tagsRaw= document.getElementById("fTags").value.trim();
-  const thumb  = document.getElementById("fThumb").value.trim();
+  const title  = document.getElementById("fTitle")?.value.trim();
+  const cat    = document.getElementById("fCategory")?.value;
+  const year   = document.getElementById("fYear")?.value.trim();
+  const client = document.getElementById("fClient")?.value.trim();
+  const tagsRaw= document.getElementById("fTags")?.value.trim();
+  const thumb  = document.getElementById("fThumb")?.value.trim();
 
   if (!title || !year) { toast("제목과 연도는 필수입니다."); return; }
 
   const tags = tagsRaw ? tagsRaw.split(",").map(t => t.trim()).filter(Boolean) : [];
 
+  // collect detail
+  const descriptions = [...document.querySelectorAll(".desc-input")]
+    .map(t => t.value.trim()).filter(Boolean);
+  const specs = [...document.querySelectorAll("#specList .dyn-item")].map(row => ({
+    label: row.querySelector(".spec-label")?.value.trim() || "",
+    value: row.querySelector(".spec-value")?.value.trim() || "",
+  })).filter(s => s.value);
+  const images = [...document.querySelectorAll(".img-url")]
+    .map(i => i.value.trim()).filter(Boolean);
+
+  const detail = { description: descriptions, specs, images };
+
   if (editingId) {
     const idx = works.findIndex(w => w.id === editingId);
-    if (idx !== -1) {
-      works[idx] = { ...works[idx], title, category: cat, year, client: client || null, tags, thumbnail: thumb };
-      toast("저장됐어요!");
-    }
+    if (idx !== -1) works[idx] = { ...works[idx], title, category: cat, year, client: client||null, tags, thumbnail: thumb, detail };
+    toast("저장됐어요!");
   } else {
     const id = slugify(title) || ("work-" + Date.now());
-    works.push({ id, title, category: cat, year, client: client || null, tags, thumbnail: thumb });
+    works.push({ id, title, category: cat, year, client: client||null, tags, thumbnail: thumb, detail });
     editingId = id;
     toast("추가됐어요!");
   }
@@ -662,76 +523,49 @@ function saveForm() {
   openEdit(editingId);
 }
 
-// ── Delete ───────────────────────────────────
+// ── Delete ────────────────────────────────────
 function confirmDelete(id) {
   deleteTarget = id;
   const w = works.find(x => x.id === id);
-  document.getElementById("confirmMsg").textContent =
-    `"${w?.title}"을(를) 삭제합니다. 이 작업은 되돌릴 수 없습니다.`;
+  document.getElementById("confirmMsg").textContent = `"${w?.title}"을(를) 삭제합니다. 되돌릴 수 없습니다.`;
   document.getElementById("confirmOverlay").classList.add("visible");
 }
-
 document.getElementById("confirmCancel").addEventListener("click", () => {
   document.getElementById("confirmOverlay").classList.remove("visible");
   deleteTarget = null;
 });
-
 document.getElementById("confirmOk").addEventListener("click", () => {
   if (!deleteTarget) return;
   works = works.filter(w => w.id !== deleteTarget);
-  if (editingId === deleteTarget) {
-    editingId = null;
-    document.getElementById("formPanelTitle").textContent = "항목 선택";
-    document.getElementById("formBody").innerHTML = '<div class="empty">← 왼쪽에서 항목을 선택하거나<br>새 작업을 추가하세요</div>';
-  }
-  save();
-  renderList();
+  if (editingId === deleteTarget) resetForm();
+  save(); renderList();
   document.getElementById("confirmOverlay").classList.remove("visible");
   deleteTarget = null;
   toast("삭제됐어요.");
 });
 
-// ── Export ───────────────────────────────────
+// ── Export ────────────────────────────────────
 document.getElementById("btnExport").addEventListener("click", () => {
-  const json  = JSON.stringify(works, null, 2);
-  const blob  = new Blob([json], { type: "application/json" });
-  const url   = URL.createObjectURL(blob);
-  const a     = document.createElement("a");
-  a.href = url; a.download = "works.json"; a.click();
-  URL.revokeObjectURL(url);
-
-  const status = document.getElementById("exportStatus");
-  status.classList.add("visible");
-  setTimeout(() => status.classList.remove("visible"), 2500);
+  const blob = new Blob([JSON.stringify(works, null, 2)], { type: "application/json" });
+  const a = Object.assign(document.createElement("a"), { href: URL.createObjectURL(blob), download: "works.json" });
+  a.click(); URL.revokeObjectURL(a.href);
+  const s = document.getElementById("exportStatus");
+  s.classList.add("visible"); setTimeout(() => s.classList.remove("visible"), 2500);
 });
-
 document.getElementById("btnReset").addEventListener("click", () => {
   if (!confirm("localStorage를 초기화하고 원본 works.json으로 돌아갑니다. 계속할까요?")) return;
-  localStorage.removeItem(STORAGE_KEY);
-  location.reload();
+  localStorage.removeItem(STORAGE_KEY); location.reload();
 });
 
-// ── Toast ─────────────────────────────────────
-function toast(msg) {
-  const el = document.getElementById("toast");
-  el.textContent = msg;
-  el.classList.add("show");
-  setTimeout(() => el.classList.remove("show"), 2000);
-}
-
 // ── Init ──────────────────────────────────────
+document.getElementById("btnNew").addEventListener("click", openNew);
+
 async function init() {
   const stored = load();
-  if (stored) {
-    works = stored;
-  } else {
-    const res = await fetch(SOURCE_URL);
-    works = await res.json();
-  }
+  if (stored) { works = stored; }
+  else { works = await fetch(SOURCE_URL).then(r => r.json()); }
   renderList();
 }
-
-document.getElementById("btnNew").addEventListener("click", openNew);
 init();
 </script>
 </body>
