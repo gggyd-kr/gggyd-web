@@ -1,45 +1,12 @@
-const works = [
-  {
-    id: "flower-side-table",
-    title: "Flower Side Table",
-    category: "designed-made",
-    year: "2026",
-    client: null,
-    tags: ["Furniture"],
-    thumbnail: "https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=600&h=740&fit=crop",
-  },
-  {
-    id: "popup-booth",
-    title: "Department Store Pop-up Booth",
-    category: "fabrication",
-    year: "2024",
-    client: "OO Architecture Studio",
-    tags: ["Space"],
-    thumbnail: "https://images.unsplash.com/photo-1556228720-195a672e8a03?w=600&h=740&fit=crop",
-  },
-  {
-    id: "wood-object",
-    title: "Wood Object Collection",
-    category: "designed-made",
-    year: "2023",
-    client: null,
-    tags: ["Object"],
-    thumbnail: "https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=600&h=740&fit=crop",
-  },
-  {
-    id: "jogakbo-tray",
-    title: "Jogakbo Tray",
-    category: "designed-made",
-    year: "2022",
-    client: null,
-    tags: ["Object"],
-    thumbnail: "https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=600&h=740&fit=crop",
-  },
-];
+let allWorks = [];
+let activeFilter = "all";
 
 function buildGrid(filter) {
+  activeFilter = filter;
   const grid = document.getElementById("workGrid");
-  const sorted = [...works].sort((a, b) => b.year - a.year);
+  if (!grid) return;
+
+  const sorted = [...allWorks].sort((a, b) => b.year - a.year);
   const filtered = filter === "all" ? sorted : sorted.filter(w => w.category === filter);
 
   grid.innerHTML = "";
@@ -70,8 +37,22 @@ function buildGrid(filter) {
   });
 }
 
-document.addEventListener("DOMContentLoaded", () => {
-  buildGrid("all");
+function getStoredWorks() {
+  const stored = localStorage.getItem("gggyd_works");
+  return stored ? JSON.parse(stored) : null;
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+  // prefer localStorage edits over the JSON file
+  const stored = getStoredWorks();
+  if (stored) {
+    allWorks = stored;
+    buildGrid(activeFilter);
+  } else {
+    const res = await fetch("data/works.json");
+    allWorks = await res.json();
+    buildGrid(activeFilter);
+  }
 
   document.querySelectorAll(".filter-btn").forEach(btn => {
     btn.addEventListener("click", () => {
