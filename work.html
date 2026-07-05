@@ -5,52 +5,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Work - 감각공예단</title>
     <link rel="preconnect" href="https://use.typekit.net" crossorigin>
-      (function(d) {
     <script>
       (function(d) {
-        var config = {
-          kitId: 'pyk6bts',
-          scriptTimeout: 3000,
-          async: true
-        },
+        var config = { kitId: 'pyk6bts', scriptTimeout: 3000, async: true },
         h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
       })(document);
     </script>
     <script>
       (function(d) {
-        var config = {
-          kitId: 'wqo4akj',
-          scriptTimeout: 3000,
-          async: true
-        },
+        var config = { kitId: 'wqo4akj', scriptTimeout: 3000, async: true },
         h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
       })(document);
     </script>
     <link rel="stylesheet" href="css/styles.css">
-    <script>
-      (function(d) {
-        var config = {
-          kitId: 'pyk6bts',
-          scriptTimeout: 3000,
-          async: true
-        },
-        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-      })(document);
-    </script>
-    <script>
-      (function(d) {
-        var config = {
-          kitId: 'wqo4akj',
-          scriptTimeout: 3000,
-          async: true
-        },
-        h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
-      })(document);
-    </script>
     <link rel="stylesheet" href="css/work.css">
 </head>
 <body>
-    <!-- Language Switcher - Top Right -->
     <div class="top-language-switcher">
         <a href="#" class="active">KR</a>
         <span class="separator">/</span>
@@ -74,7 +44,6 @@
         </nav>
     </header>
 
-    <!-- Full Page Menu Overlay -->
     <div class="menu-overlay" id="menuOverlay">
         <button class="menu-close" id="menuClose"></button>
         <div class="menu-content">
@@ -93,49 +62,17 @@
     </div>
 
     <main class="work-page">
-        <!-- Category Filter -->
-        <div class="category-filter">
-            <button class="category-btn active" data-category="all">All</button>
-            <button class="category-btn" data-category="space">Space</button>
-            <button class="category-btn" data-category="product">Product</button>
+        <div class="work-filters">
+            <button class="filter-btn active" data-filter="all">전체</button>
+            <button class="filter-btn" data-filter="designed-made">자체 제작</button>
+            <button class="filter-btn" data-filter="designed">디자인</button>
+            <button class="filter-btn" data-filter="fabrication">제작 협업</button>
         </div>
 
-        <!-- Projects Grid -->
-        <div class="projects-grid">
-            <!-- Product Projects -->
-            <a href="project-detail-new.html?id=jogakbo-tray" class="project-card" data-category="product">
-                <div class="project-images">
-                    <img src="https://images.unsplash.com/photo-1565538810643-b5bdb714032a?w=800&h=1000&fit=crop" alt="조각보 트레이" class="main-image">
-                    <img src="https://images.unsplash.com/photo-1615874959474-d609969a20ed?w=800&h=1000&fit=crop" alt="조각보 트레이 호버" class="hover-image">
-                </div>
-                <div class="project-info">
-                    <h3 class="project-name">조각보 트레이</h3>
-                    <span class="project-year">2024</span>
-                </div>
-            </a>
+        <div class="work-list" id="workList"></div>
 
-            <a href="project-detail-new.html?id=popup-booth" class="project-card" data-category="space">
-                <div class="project-images">
-                    <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&h=1000&fit=crop" alt="팝업부스" class="main-image">
-                    <img src="https://images.unsplash.com/photo-1556228720-195a672e8a03?w=800&h=1000&fit=crop&sat=-100" alt="팝업부스 호버" class="hover-image">
-                </div>
-                <div class="project-info">
-                    <h3 class="project-name">백화점 팝업부스 가구</h3>
-                    <span class="project-year">2024</span>
-                </div>
-            </a>
-
-            <a href="project-detail-new.html?id=wood-object" class="project-card" data-category="product">
-                <div class="project-images">
-                    <img src="https://images.unsplash.com/photo-1528459801416-a9e53bbf4e17?w=800&h=1000&fit=crop" alt="우드 오브제" class="main-image">
-                    <img src="https://images.unsplash.com/photo-1452860606245-08befc0ff44b?w=800&h=1000&fit=crop" alt="우드 오브제 호버" class="hover-image">
-                </div>
-                <div class="project-info">
-                    <h3 class="project-name">우드 오브제 컬렉션</h3>
-                    <span class="project-year">2023</span>
-                </div>
-            </a>
-
+        <div class="work-thumb-preview" id="thumbPreview">
+            <img src="" alt="" id="thumbImg">
         </div>
     </main>
 
